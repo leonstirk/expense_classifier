@@ -1,0 +1,38 @@
+{
+    "Housing & Utilities": [
+        "Power/Electricity",
+        "Waste Disposal",
+        "Phone"
+    ],
+    "Food & Dining": [
+        "Groceries",
+        "Dining Out",
+        "Cafe/Lunch",
+        "Coffee/Tea",
+        "Fast food"
+    ],
+    "Transportation": [
+        "Fuel",
+        "Public Transport",
+        "Taxi/Rideshare (Uber, Lyft)"
+    ],
+    "Health & Wellness": [
+	"Ballet",
+        "Doctor Visits",
+        "Dental",
+        "Prescription Medications"
+    ],
+    "Personal & Household Goods": [
+        "Household durables"
+    ],
+    "Entertainment & Leisure": [
+        "Books & Magazines",
+        "Movies, Concerts & Events"
+    ],
+    "Financial Expenses": [
+        "Charitable Donations"
+    ],
+    "Miscellaneous": [
+        "Miscellaneous Purchases"
+    ]
+}
