@@ -1,3 +1,6 @@
+## Expense Classifier
+# This script is a simple GUI tool to help classify expenses from a transaction file.
+
 import pandas as pd
 import json
 import os
