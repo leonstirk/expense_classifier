@@ -1,23 +1,7 @@
 ## Expense Classifier
-# This script is a simple GUI tool to help classify expenses from a transaction file.
 
-import logging
+# import os
 import pandas as pd
-import json
-import os
-import tkinter as tk
-from tkinter import filedialog, ttk, messagebox, Canvas, Frame
-from difflib import get_close_matches
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.pipeline import make_pipeline
-import numpy as np
-
-## Set up logging
-logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
-
-import pandas as pd
-import logging
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB

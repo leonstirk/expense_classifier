@@ -1,8 +1,11 @@
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import filedialog, ttk, messagebox, Canvas, Frame
+from difflib import get_close_matches
+# from sklearn.pipeline import make_pipeline
+
 from app_controller import AppController
 
-class ExpenseClassifierGUI:
+class AppGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("Expense Classifier")
@@ -56,6 +59,8 @@ class ExpenseClassifierGUI:
         
         self.summary_btn = tk.Button(self.scrollable_frame, text="Show Summary", command=self.show_summary)
         self.summary_btn.pack(pady=10)
+
+        self.controller = AppController()
 
     def show_summary(self):
         if self.df is not None:
@@ -155,28 +160,6 @@ class ExpenseClassifierGUI:
         self.current_index += len(identical_rows)
         self.show_next_transaction()
 
-
-
-
-class AppGUI:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("Expense Classifier")
-
-        self.label = tk.Label(root, text="Enter Transaction Description:")
-        self.label.pack()
-
-        self.entry = tk.Entry(root, width=50)
-        self.entry.pack()
-
-        self.button = tk.Button(root, text="Classify", command=self.classify_expense)
-        self.button.pack()
-
-        self.result_label = tk.Label(root, text="", fg="blue")
-        self.result_label.pack()
-
-        self.controller = AppController()
-
     def classify_expense(self):
         """Gets the transaction description and runs classification."""
         transaction_detail = self.entry.get()
@@ -189,8 +172,30 @@ class AppGUI:
         result_text = "\n".join([f"{cat}: {score:.2f}" for cat, score in predictions])
         self.result_label.config(text=result_text)
 
-# Run the GUI
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = AppGUI(root)
-    root.mainloop()
+
+# class AppGUI:
+#     def __init__(self, root):
+#         self.root = root
+#         self.root.title("Expense Classifier")
+
+#         self.label = tk.Label(root, text="Enter Transaction Description:")
+#         self.label.pack()
+
+#         self.entry = tk.Entry(root, width=50)
+#         self.entry.pack()
+
+#         self.button = tk.Button(root, text="Classify", command=self.classify_expense)
+#         self.button.pack()
+
+#         self.result_label = tk.Label(root, text="", fg="blue")
+#         self.result_label.pack()
+
+#         self.controller = AppController()
+
+
+
+## Run the GUI
+# if __name__ == "__main__":
+#     root = tk.Tk()
+#     app = AppGUI(root)
+#     root.mainloop()
