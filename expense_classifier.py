@@ -1,6 +1,7 @@
 ## Expense Classifier
 # This script is a simple GUI tool to help classify expenses from a transaction file.
 
+import logging
 import pandas as pd
 import json
 import os
@@ -11,6 +12,9 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import make_pipeline
 import numpy as np
+
+## Set up logging
+logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
 
 # File paths
 CLASSIFICATION_FILE = "expense_classifications.json"
@@ -45,6 +49,8 @@ class ExpenseClassifierGUI:
         self.root.geometry("800x700")
         
         self.classifications = load_classifications()
+        logging.debug(f"Loaded classifications: {self.classifications}")
+
         self.df = None
         self.current_index = 0
         self.fuzzy_match_vars = []
@@ -115,6 +121,7 @@ class ExpenseClassifierGUI:
             self.category_var.set(self.category_tree.item(selected_item[0], "text"))
 
     def load_file(self):
+        logging.debug("Loading transaction file...")    
         file_path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv"), ("Excel files", "*.xlsx")])
         if file_path:
             if file_path.endswith(".csv"):
@@ -125,14 +132,31 @@ class ExpenseClassifierGUI:
             self.show_next_transaction()
 
     def show_next_transaction(self):
+
         if self.df is None or self.current_index >= len(self.df):
             messagebox.showinfo("Complete", "All transactions classified!")
             return
         row = self.df.iloc[self.current_index]
+        logging.debug(f"Processing row: {row}") 
+
         identical_rows = self.df[self.df["Details"] == row["Details"]]
+        logging.debug(f"Identical rows: {identical_rows}")
+
         fuzzy_matches = get_close_matches(row["Details"], self.df["Details"].unique(), n=5, cutoff=FUZZY_MATCH_THRESHOLD)
-        
-        transactions_text = "\n".join([f"Date: {r['Date']} | Amount: {r['Amount']} | Description: {r['Details']}" for _, r in identical_rows.iterrows()])
+        logging.debug(f"Fuzzy matches: {fuzzy_matches}")
+
+        fuzzy_rows = self.df[self.df["Details"].isin(fuzzy_matches)]
+        logging.debug(f"Fuzzy rows: {fuzzy_rows}")  
+
+        merged_rows = pd.concat([identical_rows, fuzzy_rows]).drop_duplicates()
+        logging.debug(f"Merged rows: {merged_rows}")
+
+        # Generate transactions text
+        ## transactions_text = "\n".join([f"Date: {r['Date']} | Amount: {r['Amount']} | Description: {r['Details']}" for _, r in identical_rows.iterrows()])
+        transactions_text = "\n".join(
+            [f"Date: {r['Date']} | Amount: {r['Amount']} | Description: {r['Details']}" for _, r in merged_rows.iterrows()]
+        )
+        logging.debug(f"Transactions:\n{transactions_text}")
         
         self.transaction_info_label.config(text=f"Review transactions:\n{transactions_text}")
         
