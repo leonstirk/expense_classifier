@@ -1,9 +1,15 @@
+# Description: GUI for the expense classifier application.
+
+import logging
+import os
+import json
+import pandas as pd
 import tkinter as tk
 from tkinter import filedialog, ttk, messagebox, Canvas, Frame
 from difflib import get_close_matches
 # from sklearn.pipeline import make_pipeline
-
 from app_controller import AppController
+from config import FUZZY_MATCH_THRESHOLD, EXPENSE_CATEGORIES_FILE
 
 class AppGUI:
     def __init__(self, root):
@@ -11,7 +17,7 @@ class AppGUI:
         self.root.title("Expense Classifier")
         self.root.geometry("800x700")
         
-        self.classifications = load_classifications()
+        self.classifications = AppController.load_classifications()
         logging.debug(f"Loaded classifications: {self.classifications}")
 
         self.df = None
@@ -69,15 +75,42 @@ class AppGUI:
             print(summary)
             messagebox.showinfo("Summary", summary.to_string())
 
+    # Load or initialize expense categories
+    def load_expense_categories(self):
+        if os.path.exists(EXPENSE_CATEGORIES_FILE):
+            with open(EXPENSE_CATEGORIES_FILE, "r") as f:
+                return json.load(f)
+        return {}
+    
     def populate_category_tree(self):
         """ Populate the hierarchical category dropdown """
         self.category_tree.heading("#0", text="Select a Category", anchor=tk.W)
+        EXPENSE_CATEGORIES = self.load_expense_categories()
+        if not EXPENSE_CATEGORIES:
+            logging.warning("No categories found in expense_categories.json!")
+        logging.debug(f"Loaded categories: {EXPENSE_CATEGORIES}")   
         for parent_category, subcategories in EXPENSE_CATEGORIES.items():
             parent_id = self.category_tree.insert("", "end", text=parent_category, open=False)
             for subcategory in subcategories:
                 self.category_tree.insert(parent_id, "end", text=subcategory)
         
         self.category_tree.bind("<ButtonRelease-1>", self.on_category_select)
+    
+        # """Populate the hierarchical category dropdown"""
+        # self.category_tree.heading("#0", text="Select a Category", anchor=tk.W)
+        # # Ensure categories are loaded properly
+        # categories = self.load_expense_categories()
+        # if not categories:
+        #     logging.warning("No categories found in expense_categories.json!")
+
+        # for parent_category, subcategories in categories.items():
+        #     parent_id = self.category_tree.insert("", "end", text=parent_category, open=False)
+        #     for subcategory in subcategories:
+        #         self.category_tree.insert(parent_id, "end", text=subcategory)
+
+        # self.category_tree.bind("<ButtonRelease-1>", self.on_category_select)
+
+
     
     def on_category_select(self, event):
         """ Set selected category """
@@ -146,7 +179,7 @@ class AppGUI:
         
         row = self.df.iloc[self.current_index]
         self.classifications[row["Details"]] = category
-        save_classifications(self.classifications)
+        AppController.save_classifications(self.classifications)
         
         identical_rows = self.df[self.df["Details"] == row["Details"]]
         self.df.loc[identical_rows.index, "Category"] = category
@@ -156,7 +189,7 @@ class AppGUI:
                 self.df.loc[self.df["Details"] == match, "Category"] = category
                 self.classifications[match] = category
         
-        save_classifications(self.classifications)
+        AppController.save_classifications(self.classifications)
         self.current_index += len(identical_rows)
         self.show_next_transaction()
 
@@ -171,6 +204,12 @@ class AppGUI:
 
         result_text = "\n".join([f"{cat}: {score:.2f}" for cat, score in predictions])
         self.result_label.config(text=result_text)
+
+## Run the GUI
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = AppGUI(root)
+    root.mainloop()
 
 
 # class AppGUI:
@@ -194,8 +233,3 @@ class AppGUI:
 
 
 
-## Run the GUI
-# if __name__ == "__main__":
-#     root = tk.Tk()
-#     app = AppGUI(root)
-#     root.mainloop()
