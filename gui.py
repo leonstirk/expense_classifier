@@ -12,21 +12,23 @@ from app_controller import AppController
 from config import FUZZY_MATCH_THRESHOLD, EXPENSE_CATEGORIES_FILE
 
 class AppGUI:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("Expense Classifier")
-        self.root.geometry("800x700")
+    def __init__(self, master, controller):
+        self.master = master  # ✅ Store root window
+        self.controller = controller  # ✅ Store controller instance
+
+        self.master.title("Expense Classifier")
+        self.master.geometry("800x700")
         
-        self.classifications = AppController.load_classifications()
-        logging.debug(f"Loaded classifications: {self.classifications}")
+        #self.classifications = AppController.load_classifications()
+        #logging.debug(f"Loaded classifications: {self.classifications}")
 
         self.df = None
         self.current_index = 0
         self.fuzzy_match_vars = []
 
         # Add scrollable frame
-        self.canvas = Canvas(root)
-        self.scrollbar = ttk.Scrollbar(root, orient="vertical", command=self.canvas.yview)
+        self.canvas = Canvas(master)
+        self.scrollbar = ttk.Scrollbar(master, orient="vertical", command=self.canvas.yview)
         self.scrollable_frame = Frame(self.canvas)
 
         self.scrollable_frame.bind(
@@ -47,11 +49,14 @@ class AppGUI:
 
         self.transaction_info_label = tk.Label(self.scrollable_frame, text="Select a transaction file to begin", font=("Arial", 12))
         self.transaction_info_label.pack(pady=10)
-        
+
+        self.status_label = tk.Label(self.master, text="", fg="green")
+        self.status_label.pack()
+
         self.category_var = tk.StringVar()
         self.category_tree = ttk.Treeview(self.scrollable_frame)
         self.category_tree.pack(pady=10)
-        
+
         self.populate_category_tree()
         
         self.prediction_label = tk.Label(self.scrollable_frame, text="", font=("Arial", 12))
@@ -88,29 +93,13 @@ class AppGUI:
         EXPENSE_CATEGORIES = self.load_expense_categories()
         if not EXPENSE_CATEGORIES:
             logging.warning("No categories found in expense_categories.json!")
-        logging.debug(f"Loaded categories: {EXPENSE_CATEGORIES}")   
+        # logging.debug(f"Loaded categories: {EXPENSE_CATEGORIES}")   
         for parent_category, subcategories in EXPENSE_CATEGORIES.items():
             parent_id = self.category_tree.insert("", "end", text=parent_category, open=False)
             for subcategory in subcategories:
                 self.category_tree.insert(parent_id, "end", text=subcategory)
         
         self.category_tree.bind("<ButtonRelease-1>", self.on_category_select)
-    
-        # """Populate the hierarchical category dropdown"""
-        # self.category_tree.heading("#0", text="Select a Category", anchor=tk.W)
-        # # Ensure categories are loaded properly
-        # categories = self.load_expense_categories()
-        # if not categories:
-        #     logging.warning("No categories found in expense_categories.json!")
-
-        # for parent_category, subcategories in categories.items():
-        #     parent_id = self.category_tree.insert("", "end", text=parent_category, open=False)
-        #     for subcategory in subcategories:
-        #         self.category_tree.insert(parent_id, "end", text=subcategory)
-
-        # self.category_tree.bind("<ButtonRelease-1>", self.on_category_select)
-
-
     
     def on_category_select(self, event):
         """ Set selected category """
@@ -149,11 +138,45 @@ class AppGUI:
         merged_rows = pd.concat([identical_rows, fuzzy_rows]).drop_duplicates()
         logging.debug(f"Merged rows: {merged_rows}")
 
+        # transactions_text = ""
+
+        # rows = []
+        # for _, r in merged_rows.iterrows():
+        #     predictions = self.controller.get_prediction(r['Details'])  # returns list of (category, prob)
+
+        #     # Format top predictions into a string
+        #     formatted_predictions = ", ".join([
+        #         f"{cat} ({prob:.2f})" for cat, prob in predictions
+        #     ])
+
+        #     row_text = (
+        #         f"Date: {r['Date']} | "
+        #         f"Amount: {r['Amount']} | "
+        #         f"Description: {r['Details']} | "
+        #         f"Predicted Categories: {formatted_predictions}"
+        #     )
+        #     rows.append(row_text)
+
+        # transactions_text = "\n".join(rows)
+
+        # self.text_box.delete("1.0", tk.END)
+        # self.text_box.insert(tk.END, transactions_text)
+
+
         # Generate transactions text
         ## transactions_text = "\n".join([f"Date: {r['Date']} | Amount: {r['Amount']} | Description: {r['Details']}" for _, r in identical_rows.iterrows()])
-        transactions_text = "\n".join(
-            [f"Date: {r['Date']} | Amount: {r['Amount']} | Description: {r['Details']}" for _, r in merged_rows.iterrows()]
-        )
+
+        # transactions_text = "\n".join(
+        #     [f"Date: {r['Date']} | Amount: {r['Amount']} | Description: {r['Details']}" for _, r in merged_rows.iterrows()]
+        # )
+
+        transactions_text = "\n".join([
+            f"Date: {r['Date']} | "
+            f"Amount: {r['Amount']} | "
+            f"Description: {r['Details']} | "
+            f"Predictions: {', '.join([f'{cat} ({prob:.2f})' for cat, prob in self.controller.get_prediction(r['Details'])])}"
+            for _, r in merged_rows.iterrows()
+        ])
         logging.debug(f"Transactions:\n{transactions_text}")
         
         self.transaction_info_label.config(text=f"Review transactions:\n{transactions_text}")
@@ -193,43 +216,36 @@ class AppGUI:
         self.current_index += len(identical_rows)
         self.show_next_transaction()
 
-    def classify_expense(self):
-        """Gets the transaction description and runs classification."""
-        transaction_detail = self.entry.get()
-        if not transaction_detail:
-            messagebox.showwarning("Input Error", "Please enter a transaction description.")
-            return
+    def save_classifications(self):
+        self.controller.save_classifications()
+        self.status_label.config(text="Classifications saved and model retrained.")
+        self.master.after(3000, lambda: self.status_label.config(text=""))
 
-        predictions = self.controller.predict_expense(transaction_detail)
 
-        result_text = "\n".join([f"{cat}: {score:.2f}" for cat, score in predictions])
-        self.result_label.config(text=result_text)
+    # def classify_expense(self):
+    #     """Gets the transaction description and runs classification."""
+    #     transaction_detail = self.entry.get()
+    #     if not transaction_detail:
+    #         messagebox.showwarning("Input Error", "Please enter a transaction description.")
+    #         return
+
+    #     predictions = self.controller.get_prediction(transaction_detail)
+
+    #     result_text = "\n".join([f"{cat}: {score:.2f}" for cat, score in predictions])
+    #     self.result_label.config(text=result_text)
 
 ## Run the GUI
+# if __name__ == "__main__":
+#     root = tk.Tk()
+#     app = AppGUI(root)
+#     root.mainloop()
+
+
 if __name__ == "__main__":
-    root = tk.Tk()
-    app = AppGUI(root)
-    root.mainloop()
-
-
-# class AppGUI:
-#     def __init__(self, root):
-#         self.root = root
-#         self.root.title("Expense Classifier")
-
-#         self.label = tk.Label(root, text="Enter Transaction Description:")
-#         self.label.pack()
-
-#         self.entry = tk.Entry(root, width=50)
-#         self.entry.pack()
-
-#         self.button = tk.Button(root, text="Classify", command=self.classify_expense)
-#         self.button.pack()
-
-#         self.result_label = tk.Label(root, text="", fg="blue")
-#         self.result_label.pack()
-
-#         self.controller = AppController()
+    master = tk.Tk()
+    controller = AppController()  # ✅ Create the controller first
+    app = AppGUI(master, controller)  # ✅ Pass controller to AppGUI
+    master.mainloop()
 
 
 

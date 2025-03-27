@@ -1,24 +1,28 @@
 ## Expense Classifier
 
 import logging
+import json
 import pandas as pd
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.preprocessing import LabelEncoder
+from config import CLASSIFICATION_FILE  # Import global settings
+
 
 class ExpenseClassifier:
-    def __init__(self, expense_classifications):
-        self.expense_classifications = expense_classifications
+    def __init__(self, classification_file=CLASSIFICATION_FILE):
+        self.classification_file = classification_file
         self.vectorizer = TfidfVectorizer(stop_words="english")
         self.classifier = MultinomialNB()
         self.label_encoder = LabelEncoder()
+        self._load_classifications()
         self._train_model()
 
     def _train_model(self):
         """Train the classifier with known expense categories."""
-        descriptions = list(self.expense_classifications.keys())
-        categories = list(self.expense_classifications.values())
+        descriptions = list(self.classifications.keys())
+        categories = list(self.classifications.values())
 
         self.label_encoder.fit(categories)
         y_train = self.label_encoder.transform(categories)
@@ -26,6 +30,15 @@ class ExpenseClassifier:
 
         self.classifier.fit(X_train, y_train)
         logging.info("Expense Classifier trained successfully.")
+
+    def _load_classifications(self):
+        with open(self.classification_file, "r") as f:
+            self.classifications = json.load(f)
+
+    def reload_and_retrain(self):
+        """Reloads the classification file and retrains the model."""
+        self._load_classifications()
+        self._train_model()
 
     def predict_category(self, transaction_detail, top_n=3):
         """Predicts the expense category for a transaction."""
