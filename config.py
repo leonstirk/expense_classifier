@@ -15,7 +15,7 @@ logging.basicConfig(
 )
 
 # File paths
-CLASSIFICATION_FILE = "assets/expense_classifications.json"
+CLASSIFICATION_FILE = "data/expense_classifications.json"
 EXPENSE_CATEGORIES_FILE = "assets/expense_categories.json"
 CONFIDENCE_THRESHOLD = 0.8  # Set threshold for high-confidence classification
 FUZZY_MATCH_THRESHOLD = 0.7  # Threshold for fuzzy matching similar transactions
