@@ -9,7 +9,7 @@ from tkinter import filedialog, ttk, messagebox, Canvas, Frame
 from difflib import get_close_matches
 # from sklearn.pipeline import make_pipeline
 from app_controller import AppController
-from config import FUZZY_MATCH_THRESHOLD, EXPENSE_CATEGORIES_FILE
+from config import EXPENSE_CATEGORIES_FILE
 
 class AppGUI:
     def __init__(self, master, controller):
@@ -17,14 +17,14 @@ class AppGUI:
         self.controller = controller  # ✅ Store controller instance
 
         self.master.title("Expense Classifier")
-        self.master.geometry("800x700")
+        self.master.geometry("1400x700")
         
         #self.classifications = AppController.load_classifications()
         #logging.debug(f"Loaded classifications: {self.classifications}")
 
         self.df = None
         self.current_index = 0
-        self.fuzzy_match_vars = []
+        # self.fuzzy_match_vars = []
 
         # Add scrollable frame
         self.canvas = Canvas(master)
@@ -47,26 +47,43 @@ class AppGUI:
         self.file_btn = tk.Button(self.scrollable_frame, text="Load Transactions", command=self.load_file)
         self.file_btn.pack(pady=10)
 
-        self.transaction_info_label = tk.Label(self.scrollable_frame, text="Select a transaction file to begin", font=("Arial", 12))
-        self.transaction_info_label.pack(pady=10)
+        ############################################
+        ## Frame based cards layout
+        self.card_canvas = tk.Canvas(self.master, height=500)
+        self.card_frame = ttk.Frame(self.card_canvas)
+
+        # Attach card_frame to a scrollbar
+        scrollbar = ttk.Scrollbar(self.master, orient="vertical", command=self.card_canvas.yview)
+        self.card_canvas.configure(yscrollcommand=scrollbar.set)
+
+        # Create a window inside the canvas to hold the frame
+        self.canvas_window = self.card_canvas.create_window((0, 0), window=self.card_frame, anchor="nw")
+
+        # Scrollable layout
+        self.card_canvas.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
+
+        # Update scroll region when the inner frame changes size
+        self.card_frame.bind("<Configure>", lambda e: self.card_canvas.configure(scrollregion=self.card_canvas.bbox("all")))
+        ############################################
 
         self.status_label = tk.Label(self.master, text="", fg="green")
         self.status_label.pack()
 
-        self.category_var = tk.StringVar()
-        self.category_tree = ttk.Treeview(self.scrollable_frame)
-        self.category_tree.pack(pady=10)
+        # self.category_var = tk.StringVar()
+        # self.category_tree = ttk.Treeview(self.scrollable_frame)
+        # self.category_tree.pack(pady=10)
 
-        self.populate_category_tree()
+        # self.populate_category_tree()
         
-        self.prediction_label = tk.Label(self.scrollable_frame, text="", font=("Arial", 12))
-        self.prediction_label.pack(pady=10)
+        # self.prediction_label = tk.Label(self.scrollable_frame, text="", font=("Arial", 12))
+        # self.prediction_label.pack(pady=10)
         
-        self.fuzzy_match_frame = tk.Frame(self.scrollable_frame)
-        self.fuzzy_match_frame.pack(pady=10)
+        # self.fuzzy_match_frame = tk.Frame(self.scrollable_frame)
+        # self.fuzzy_match_frame.pack(pady=10)
 
-        self.confirm_btn = tk.Button(self.scrollable_frame, text="Confirm Classification", command=self.classify_current)
-        self.confirm_btn.pack(pady=10)
+        # self.confirm_btn = tk.Button(self.scrollable_frame, text="Confirm Classification", command=self.classify_current)
+        # self.confirm_btn.pack(pady=10)
         
         self.summary_btn = tk.Button(self.scrollable_frame, text="Show Summary", command=self.show_summary)
         self.summary_btn.pack(pady=10)
@@ -93,7 +110,6 @@ class AppGUI:
         EXPENSE_CATEGORIES = self.load_expense_categories()
         if not EXPENSE_CATEGORIES:
             logging.warning("No categories found in expense_categories.json!")
-        # logging.debug(f"Loaded categories: {EXPENSE_CATEGORIES}")   
         for parent_category, subcategories in EXPENSE_CATEGORIES.items():
             parent_id = self.category_tree.insert("", "end", text=parent_category, open=False)
             for subcategory in subcategories:
@@ -107,6 +123,7 @@ class AppGUI:
         if selected_item:
             self.category_var.set(self.category_tree.item(selected_item[0], "text"))
 
+
     def load_file(self):
         logging.debug("Loading transaction file...")    
         file_path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv"), ("Excel files", "*.xlsx")])
@@ -115,130 +132,76 @@ class AppGUI:
                 self.df = pd.read_csv(file_path)
             else:
                 self.df = pd.read_excel(file_path)
+            # Pass the loaded DataFrame to the controller
+            self.controller.set_transactions_df(self.df)
             self.current_index = 0
             self.show_next_transaction()
 
-    def show_next_transaction(self):
 
+    ## Frame based cards layout rendering function
+    def display_transaction_cards(self, merged_rows):
+        # Clear old cards
+        for widget in self.card_frame.winfo_children():
+            widget.destroy()
+
+        for _, r in merged_rows.iterrows():
+            predictions = self.controller.get_prediction(r["Details"])
+            top_preds = predictions
+
+            card = ttk.Frame(self.card_frame, padding=10, relief="raised", borderwidth=1)
+            card.pack(fill="x", padx=10, pady=5)
+
+            ttk.Label(card, text=f"Date: {r['Date']}").pack(anchor="w")
+            ttk.Label(card, text=f"Description: {r['Details']}").pack(anchor="w")
+            ttk.Label(card, text=f"Amount: ${r['Amount']}").pack(anchor="w")
+            # ttk.Label(card, text="Predicted Categories:").pack(anchor="w")
+            # ttk.Label(card, text=top_preds, justify="left", foreground="gray").pack(anchor="w")
+            
+            # Create a container for prediction buttons
+            pred_frame = ttk.Frame(card)
+            pred_frame.pack(anchor="w", pady=(5, 0))
+            ttk.Label(pred_frame, text="Confirm predicted category:", font=("TkDefaultFont", 10, "bold")).pack(anchor="w", pady=(0, 3))
+
+            for pred in top_preds:
+                category, confidence = pred
+                # Create a button for each prediction.
+                btn = ttk.Button(pred_frame, text=f"{category} ({confidence:.2f})",
+                                 command=lambda c=category, row=r: self.confirm_classification(row, c))
+                btn.pack(side="left", padx=5)
+
+
+    def show_next_transaction(self):
         if self.df is None or self.current_index >= len(self.df):
             messagebox.showinfo("Complete", "All transactions classified!")
             return
         row = self.df.iloc[self.current_index]
-        logging.debug(f"Processing row: {row}") 
+        merged_rows = self.controller.get_grouped_transactions(row)
 
-        identical_rows = self.df[self.df["Details"] == row["Details"]]
-        logging.debug(f"Identical rows: {identical_rows}")
-
-        fuzzy_matches = get_close_matches(row["Details"], self.df["Details"].unique(), n=5, cutoff=FUZZY_MATCH_THRESHOLD)
-        logging.debug(f"Fuzzy matches: {fuzzy_matches}")
-
-        fuzzy_rows = self.df[self.df["Details"].isin(fuzzy_matches)]
-        logging.debug(f"Fuzzy rows: {fuzzy_rows}")  
-
-        merged_rows = pd.concat([identical_rows, fuzzy_rows]).drop_duplicates()
-        logging.debug(f"Merged rows: {merged_rows}")
-
-        # transactions_text = ""
-
-        # rows = []
-        # for _, r in merged_rows.iterrows():
-        #     predictions = self.controller.get_prediction(r['Details'])  # returns list of (category, prob)
-
-        #     # Format top predictions into a string
-        #     formatted_predictions = ", ".join([
-        #         f"{cat} ({prob:.2f})" for cat, prob in predictions
-        #     ])
-
-        #     row_text = (
-        #         f"Date: {r['Date']} | "
-        #         f"Amount: {r['Amount']} | "
-        #         f"Description: {r['Details']} | "
-        #         f"Predicted Categories: {formatted_predictions}"
-        #     )
-        #     rows.append(row_text)
-
-        # transactions_text = "\n".join(rows)
-
-        # self.text_box.delete("1.0", tk.END)
-        # self.text_box.insert(tk.END, transactions_text)
+        ## Push the contents of merged_rows to the frame based transaction cards layout
+        self.display_transaction_cards(merged_rows)
 
 
-        # Generate transactions text
-        ## transactions_text = "\n".join([f"Date: {r['Date']} | Amount: {r['Amount']} | Description: {r['Details']}" for _, r in identical_rows.iterrows()])
+    # def confirm_classification(self, transaction, selected_category):
+    #     description = transaction["Details"]
+    #     self.controller.classifications[description] = selected_category
+    #     self.controller.save_classifications()
+    #     messagebox.showinfo("Confirmed", f"Transaction classified as '{selected_category}'.")
+    #     self.show_next_transaction()
 
-        # transactions_text = "\n".join(
-        #     [f"Date: {r['Date']} | Amount: {r['Amount']} | Description: {r['Details']}" for _, r in merged_rows.iterrows()]
-        # )
+    def confirm_classification(self, transaction, selected_category):
+            index = transaction.name  # This is the index from the DataFrame
+            self.controller.classifier.classifications[str(index)] = {
+                "Description": transaction["Details"],
+                "Category": selected_category
+            }
+            self.controller.save_classifications()
+            messagebox.showinfo("Confirmed", f"Transaction classified as '{selected_category}'.")
+            self.show_next_transaction()
 
-        transactions_text = "\n".join([
-            f"Date: {r['Date']} | "
-            f"Amount: {r['Amount']} | "
-            f"Description: {r['Details']} | "
-            f"Predictions: {', '.join([f'{cat} ({prob:.2f})' for cat, prob in self.controller.get_prediction(r['Details'])])}"
-            for _, r in merged_rows.iterrows()
-        ])
-        logging.debug(f"Transactions:\n{transactions_text}")
-        
-        self.transaction_info_label.config(text=f"Review transactions:\n{transactions_text}")
-        
-        # Clear previous fuzzy match checkboxes
-        for widget in self.fuzzy_match_frame.winfo_children():
-            widget.destroy()
-        self.fuzzy_match_vars = []
-
-        # Display fuzzy match checkboxes
-        tk.Label(self.fuzzy_match_frame, text="Fuzzy Matches:", font=("Arial", 10)).pack()
-        for match in fuzzy_matches:
-            var = tk.BooleanVar()
-            chk = tk.Checkbutton(self.fuzzy_match_frame, text=match, variable=var)
-            chk.pack(anchor='w')
-            self.fuzzy_match_vars.append((match, var))
-    
-    def classify_current(self):
-        category = self.category_var.get()
-        if not category:
-            messagebox.showerror("Error", "Please select a category.")
-            return
-        
-        row = self.df.iloc[self.current_index]
-        self.classifications[row["Details"]] = category
-        AppController.save_classifications(self.classifications)
-        
-        identical_rows = self.df[self.df["Details"] == row["Details"]]
-        self.df.loc[identical_rows.index, "Category"] = category
-        
-        for match, var in self.fuzzy_match_vars:
-            if var.get():
-                self.df.loc[self.df["Details"] == match, "Category"] = category
-                self.classifications[match] = category
-        
-        AppController.save_classifications(self.classifications)
-        self.current_index += len(identical_rows)
-        self.show_next_transaction()
-
-    def save_classifications(self):
-        self.controller.save_classifications()
-        self.status_label.config(text="Classifications saved and model retrained.")
-        self.master.after(3000, lambda: self.status_label.config(text=""))
-
-
-    # def classify_expense(self):
-    #     """Gets the transaction description and runs classification."""
-    #     transaction_detail = self.entry.get()
-    #     if not transaction_detail:
-    #         messagebox.showwarning("Input Error", "Please enter a transaction description.")
-    #         return
-
-    #     predictions = self.controller.get_prediction(transaction_detail)
-
-    #     result_text = "\n".join([f"{cat}: {score:.2f}" for cat, score in predictions])
-    #     self.result_label.config(text=result_text)
-
-## Run the GUI
-# if __name__ == "__main__":
-#     root = tk.Tk()
-#     app = AppGUI(root)
-#     root.mainloop()
+    # def save_classifications(self):
+    #     self.controller.save_classifications()
+    #     self.status_label.config(text="Classifications saved and model retrained.")
+    #     self.master.after(3000, lambda: self.status_label.config(text=""))
 
 
 if __name__ == "__main__":
