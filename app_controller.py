@@ -13,10 +13,21 @@ class AppController:
     def set_transactions_df(self, df):
         self.df = df
 
-    def get_grouped_transactions(self, target_row):
-        # Assuming self.df is your DataFrame of transactions
-        merged_rows = group_similar_transactions(self.df, target_row)
-        return merged_rows
+
+    def get_unclassified_transactions(self):
+        classified_indices = set(map(int, self.classifier.classifications.keys()))
+        return self.df[~self.df.index.isin(classified_indices)]
+
+
+    # def get_grouped_transactions(self, target_row):
+    #     # Assuming self.df is your DataFrame of transactions
+    #     merged_rows = group_similar_transactions(self.df, target_row)
+    #     return merged_rows
+    
+    def get_grouped_transactions(self, row):
+        unclassified_df = self.get_unclassified_transactions()
+        return group_similar_transactions(unclassified_df, row)
+
 
     def get_prediction(self, transaction_detail):
         """Predict the expense category for a given transaction."""

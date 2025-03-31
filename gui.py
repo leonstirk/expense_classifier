@@ -26,6 +26,10 @@ class AppGUI:
         self.current_index = 0
         # self.fuzzy_match_vars = []
 
+        self.progress_label = ttk.Label(self.master, text="")
+        self.progress_label.pack(anchor="e", padx=10, pady=(0, 10))
+
+
         # Add scrollable frame
         self.canvas = Canvas(master)
         self.scrollbar = ttk.Scrollbar(master, orient="vertical", command=self.canvas.yview)
@@ -103,7 +107,14 @@ class AppGUI:
             with open(EXPENSE_CATEGORIES_FILE, "r") as f:
                 return json.load(f)
         return {}
-    
+
+    def update_progress_label(self):
+        total = len(self.df)
+        classified = len(self.controller.classifier.classifications)
+        percent = int(100 * classified / total)
+        self.progress_label.config(text=f"Classified {classified} of {total} transactions ({percent}%)")
+        # self.progress_label.config(text=f"Classified {classified} of {total} transactions")
+
     def populate_category_tree(self):
         """ Populate the hierarchical category dropdown """
         self.category_tree.heading("#0", text="Select a Category", anchor=tk.W)
@@ -169,34 +180,104 @@ class AppGUI:
                                  command=lambda c=category, row=r: self.confirm_classification(row, c))
                 btn.pack(side="left", padx=5)
 
+            # Manual classification section
+            manual_frame = ttk.Frame(card)
+            manual_frame.pack(anchor="w", pady=(10, 0))
+
+            ttk.Label(manual_frame, text="Or manually select a category:").pack(anchor="w")
+
+            # Build list of known categories (sorted, unique)
+            existing_categories = sorted(set(
+                entry["Category"]
+                for entry in self.controller.classifier.classifications.values()
+            ))
+
+            # Rebuild list of known categories (sorted, unique)
+            existing_categories = sorted(set(
+                entry["Category"]
+                for entry in self.controller.classifier.classifications.values()
+            ))
+
+            # Create Combobox
+            # category_box = ttk.Combobox(manual_frame, values=existing_categories, state="readonly")
+            category_box = ttk.Combobox(manual_frame, values=existing_categories, state="normal")  # ← allows typing
+            category_box.set("Select a category")
+            category_box.pack(anchor="w", pady=(2, 5))
+
+            # Manual confirm button
+            ttk.Button(
+                manual_frame,
+                text="Confirm Manual Classification",
+                command=lambda row=r, box=category_box: self.confirm_classification(row, box.get())
+            ).pack(anchor="w", pady=(2, 0))
+
+
+    # def show_next_transaction(self):
+    #     if self.df is None or self.current_index >= len(self.df):
+    #         messagebox.showinfo("Complete", "All transactions classified!")
+    #         return
+    #     row = self.df.iloc[self.current_index]
+    #     merged_rows = self.controller.get_grouped_transactions(row)
+
+    #     ## Push the contents of merged_rows to the frame based transaction cards layout
+    #     self.display_transaction_cards(merged_rows)
 
     def show_next_transaction(self):
-        if self.df is None or self.current_index >= len(self.df):
-            messagebox.showinfo("Complete", "All transactions classified!")
-            return
-        row = self.df.iloc[self.current_index]
-        merged_rows = self.controller.get_grouped_transactions(row)
+            if self.df is None or self.current_index >= len(self.df):
+                messagebox.showinfo("Complete", "All transactions classified!")
+                return
 
-        ## Push the contents of merged_rows to the frame based transaction cards layout
-        self.display_transaction_cards(merged_rows)
+            unclassified_df = self.controller.get_unclassified_transactions()
+
+            if unclassified_df.empty:
+                messagebox.showinfo("Complete", "All transactions classified!")
+                return
+
+            # Reset to show the first unclassified transaction
+            row = unclassified_df.iloc[0]
+            merged_rows = self.controller.get_grouped_transactions(row)
+            
+            self.update_progress_label()
+            self.display_transaction_cards(merged_rows)
 
 
     # def confirm_classification(self, transaction, selected_category):
-    #     description = transaction["Details"]
-    #     self.controller.classifications[description] = selected_category
+    #     if not selected_category or selected_category == "Select a category":
+    #         messagebox.showwarning("Invalid", "Please select a category before confirming.")
+    #         return
+
+    #     index = transaction.name
+    #     self.controller.classifier.classifications[str(index)] = {
+    #         "Description": transaction["Details"],
+    #         "Category": selected_category
+    #     }
+
     #     self.controller.save_classifications()
+    #     self.update_progress_label()
     #     messagebox.showinfo("Confirmed", f"Transaction classified as '{selected_category}'.")
+
+    #     self.current_index += 1
     #     self.show_next_transaction()
 
+
     def confirm_classification(self, transaction, selected_category):
-            index = transaction.name  # This is the index from the DataFrame
-            self.controller.classifier.classifications[str(index)] = {
-                "Description": transaction["Details"],
-                "Category": selected_category
-            }
-            self.controller.save_classifications()
-            messagebox.showinfo("Confirmed", f"Transaction classified as '{selected_category}'.")
-            self.show_next_transaction()
+        if not selected_category.strip():
+            messagebox.showwarning("Invalid", "Please enter or select a category.")
+            return
+
+        index = transaction.name
+        self.controller.classifier.classifications[str(index)] = {
+            "Description": transaction["Details"],
+            "Category": selected_category.strip()
+        }
+
+        self.controller.save_classifications()
+        self.update_progress_label()
+        messagebox.showinfo("Confirmed", f"Transaction classified as '{selected_category}'.")
+
+        self.current_index += 1
+        self.show_next_transaction()
+
 
     # def save_classifications(self):
     #     self.controller.save_classifications()
