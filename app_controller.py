@@ -1,6 +1,8 @@
 from expense_classifier import ExpenseClassifier
 from fuzzy_utils import group_similar_transactions
 from utils import generate_transaction_id
+import re
+from collections import Counter
 
 class AppController:
     def __init__(self):
@@ -58,3 +60,22 @@ class AppController:
 
     #     self.classifier.save_classifications()
 
+    # Function to show the most common tokens in the transaction descriptions
+    # Development only. Comment self.controller.show_common_tokens() in load_file()
+    def show_common_tokens(self, top_n=30):
+        if self.df is None:
+            print("No data loaded.")
+            return
+
+        all_tokens = []
+
+        for desc in self.df["Details"].astype(str):
+            # Lowercase and remove special characters
+            desc = desc.lower()
+            tokens = re.findall(r"\b\w+\b", desc)
+            all_tokens.extend(tokens)
+
+        token_counts = Counter(all_tokens)
+        print(f"\nTop {top_n} most common tokens:\n")
+        for token, count in token_counts.most_common(top_n):
+            print(f"{token:<15} {count}")   
