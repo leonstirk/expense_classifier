@@ -9,7 +9,9 @@ from tkinter import filedialog, ttk, messagebox, Canvas, Frame
 from difflib import get_close_matches
 # from sklearn.pipeline import make_pipeline
 from app_controller import AppController
-from config import EXPENSE_CATEGORIES_FILE
+from utils import generate_transaction_id
+from config import EXPENSE_CATEGORIES_FILE, AUTO_CLASSIFY_THRESHOLD
+
 
 class AppGUI:
     def __init__(self, master, controller):
@@ -28,7 +30,6 @@ class AppGUI:
 
         self.progress_label = ttk.Label(self.master, text="")
         self.progress_label.pack(anchor="e", padx=10, pady=(0, 10))
-
 
         # Add scrollable frame
         self.canvas = Canvas(master)
@@ -73,21 +74,6 @@ class AppGUI:
 
         self.status_label = tk.Label(self.master, text="", fg="green")
         self.status_label.pack()
-
-        # self.category_var = tk.StringVar()
-        # self.category_tree = ttk.Treeview(self.scrollable_frame)
-        # self.category_tree.pack(pady=10)
-
-        # self.populate_category_tree()
-        
-        # self.prediction_label = tk.Label(self.scrollable_frame, text="", font=("Arial", 12))
-        # self.prediction_label.pack(pady=10)
-        
-        # self.fuzzy_match_frame = tk.Frame(self.scrollable_frame)
-        # self.fuzzy_match_frame.pack(pady=10)
-
-        # self.confirm_btn = tk.Button(self.scrollable_frame, text="Confirm Classification", command=self.classify_current)
-        # self.confirm_btn.pack(pady=10)
         
         self.summary_btn = tk.Button(self.scrollable_frame, text="Show Summary", command=self.show_summary)
         self.summary_btn.pack(pady=10)
@@ -115,24 +101,24 @@ class AppGUI:
         self.progress_label.config(text=f"Classified {classified} of {total} transactions ({percent}%)")
         # self.progress_label.config(text=f"Classified {classified} of {total} transactions")
 
-    def populate_category_tree(self):
-        """ Populate the hierarchical category dropdown """
-        self.category_tree.heading("#0", text="Select a Category", anchor=tk.W)
-        EXPENSE_CATEGORIES = self.load_expense_categories()
-        if not EXPENSE_CATEGORIES:
-            logging.warning("No categories found in expense_categories.json!")
-        for parent_category, subcategories in EXPENSE_CATEGORIES.items():
-            parent_id = self.category_tree.insert("", "end", text=parent_category, open=False)
-            for subcategory in subcategories:
-                self.category_tree.insert(parent_id, "end", text=subcategory)
+    # def populate_category_tree(self):
+    #     """ Populate the hierarchical category dropdown """
+    #     self.category_tree.heading("#0", text="Select a Category", anchor=tk.W)
+    #     EXPENSE_CATEGORIES = self.load_expense_categories()
+    #     if not EXPENSE_CATEGORIES:
+    #         logging.warning("No categories found in expense_categories.json!")
+    #     for parent_category, subcategories in EXPENSE_CATEGORIES.items():
+    #         parent_id = self.category_tree.insert("", "end", text=parent_category, open=False)
+    #         for subcategory in subcategories:
+    #             self.category_tree.insert(parent_id, "end", text=subcategory)
         
-        self.category_tree.bind("<ButtonRelease-1>", self.on_category_select)
+    #     self.category_tree.bind("<ButtonRelease-1>", self.on_category_select)
     
-    def on_category_select(self, event):
-        """ Set selected category """
-        selected_item = self.category_tree.selection()
-        if selected_item:
-            self.category_var.set(self.category_tree.item(selected_item[0], "text"))
+    # def on_category_select(self, event):
+    #     """ Set selected category """
+    #     selected_item = self.category_tree.selection()
+    #     if selected_item:
+    #         self.category_var.set(self.category_tree.item(selected_item[0], "text"))
 
 
     def load_file(self):
@@ -148,14 +134,56 @@ class AppGUI:
             self.current_index = 0
             self.show_next_transaction()
 
+    # def auto_classify_row(self, row):
+    #     index = row.name
+    #     if str(index) in self.controller.classifier.classifications:
+    #         return False  # Already classified
 
-    ## Frame based cards layout rendering function
+    #     predictions = self.controller.get_prediction(row["Details"])
+    #     top_category, top_conf = predictions[0]
+
+    #     if top_conf >= AUTO_CLASSIFY_THRESHOLD:
+    #         self.controller.classifier.classifications[str(index)] = {
+    #             "Description": row["Details"],
+    #             "Category": top_category,
+    #             "Source": "auto"
+    #         }
+    #         self.controller.save_classifications()
+    #         self.update_progress_label()
+    #         return True  # Auto-classified
+    #     return False  # Not confident enough
+
+    def auto_classify_row(self, row):
+        index = row.name
+        if str(index) in self.controller.classifier.classifications:
+            return False  # Already classified
+
+        predictions = self.controller.get_prediction(row["Details"])
+        if not predictions:
+            return False  # No model trained or no prediction available
+
+        top_category, top_conf = predictions[0]
+        if top_conf >= AUTO_CLASSIFY_THRESHOLD:
+            self.controller.classifier.classifications[str(index)] = {
+                "Description": row["Details"],
+                "Category": top_category,
+                "Source": "auto"
+            }
+            return True
+        return False
+
+    ## Frame based cards layout rendering function 
     def display_transaction_cards(self, merged_rows):
         # Clear old cards
         for widget in self.card_frame.winfo_children():
             widget.destroy()
 
         for _, r in merged_rows.iterrows():
+            uid = generate_transaction_id(r)
+
+            if uid in self.controller.classifier.classifications:
+                continue  # ✅ Skip already-classified transactions
+            
             predictions = self.controller.get_prediction(r["Details"])
             top_preds = predictions
 
@@ -211,16 +239,25 @@ class AppGUI:
                 command=lambda row=r, box=category_box: self.confirm_classification(row, box.get())
             ).pack(anchor="w", pady=(2, 0))
 
-
     # def show_next_transaction(self):
-    #     if self.df is None or self.current_index >= len(self.df):
-    #         messagebox.showinfo("Complete", "All transactions classified!")
-    #         return
-    #     row = self.df.iloc[self.current_index]
-    #     merged_rows = self.controller.get_grouped_transactions(row)
+    #         if self.df is None or self.current_index >= len(self.df):
+    #             messagebox.showinfo("Complete", "All transactions classified!")
+    #             return
 
-    #     ## Push the contents of merged_rows to the frame based transaction cards layout
-    #     self.display_transaction_cards(merged_rows)
+    #         unclassified_df = self.controller.get_unclassified_transactions()
+
+    #         if unclassified_df.empty:
+    #             messagebox.showinfo("Complete", "All transactions classified!")
+    #             return
+
+    #         # Reset to show the first unclassified transaction
+    #         row = unclassified_df.iloc[0]
+    #         merged_rows = self.controller.get_grouped_transactions(row)
+    #         self.current_group = merged_rows  # Store current group DataFrame
+            
+    #         self.update_progress_label()
+    #         self.display_transaction_cards(merged_rows)
+
 
     def show_next_transaction(self):
             if self.df is None or self.current_index >= len(self.df):
@@ -229,35 +266,30 @@ class AppGUI:
 
             unclassified_df = self.controller.get_unclassified_transactions()
 
+            # Auto-classify any rows confidently
+            auto_classified = []
+            for _, row in unclassified_df.iterrows():
+                if self.auto_classify_row(row):
+                    auto_classified.append(row.name)
+
+            # Save if anything was classified
+            if auto_classified:
+                self.controller.save_classifications()
+                self.update_progress_label()
+                # Re-filter since some rows are now classified
+                unclassified_df = self.controller.get_unclassified_transactions()
+
             if unclassified_df.empty:
-                messagebox.showinfo("Complete", "All transactions classified!")
+                # messagebox.showinfo("Complete", "All transactions classified!")
                 return
 
             # Reset to show the first unclassified transaction
             row = unclassified_df.iloc[0]
             merged_rows = self.controller.get_grouped_transactions(row)
+            self.current_group = merged_rows  # Store current group DataFrame
             
             self.update_progress_label()
             self.display_transaction_cards(merged_rows)
-
-
-    # def confirm_classification(self, transaction, selected_category):
-    #     if not selected_category or selected_category == "Select a category":
-    #         messagebox.showwarning("Invalid", "Please select a category before confirming.")
-    #         return
-
-    #     index = transaction.name
-    #     self.controller.classifier.classifications[str(index)] = {
-    #         "Description": transaction["Details"],
-    #         "Category": selected_category
-    #     }
-
-    #     self.controller.save_classifications()
-    #     self.update_progress_label()
-    #     messagebox.showinfo("Confirmed", f"Transaction classified as '{selected_category}'.")
-
-    #     self.current_index += 1
-    #     self.show_next_transaction()
 
 
     def confirm_classification(self, transaction, selected_category):
@@ -265,24 +297,30 @@ class AppGUI:
             messagebox.showwarning("Invalid", "Please enter or select a category.")
             return
 
-        index = transaction.name
-        self.controller.classifier.classifications[str(index)] = {
+        uid = generate_transaction_id(transaction)
+        self.controller.classifier.classifications[uid] = {
             "Description": transaction["Details"],
-            "Category": selected_category.strip()
+            "Category": selected_category.strip(),
+            "Source": "manual"
         }
 
         self.controller.save_classifications()
         self.update_progress_label()
-        messagebox.showinfo("Confirmed", f"Transaction classified as '{selected_category}'.")
+        # messagebox.showinfo("Confirmed", f"Transaction classified as '{selected_category}'.")
 
-        self.current_index += 1
-        self.show_next_transaction()
+        # ✅ Check if all transactions in the current group are now classified
 
+        all_classified = all(
+            generate_transaction_id(row) in self.controller.classifier.classifications
+            for _, row in self.current_group.iterrows()
+        )
 
-    # def save_classifications(self):
-    #     self.controller.save_classifications()
-    #     self.status_label.config(text="Classifications saved and model retrained.")
-    #     self.master.after(3000, lambda: self.status_label.config(text=""))
+        if all_classified:
+            self.current_index += 1  # Advance target index only when group is done
+            self.show_next_transaction()
+        else:
+            # Just re-render the current card group to hide confirmed rows
+            self.display_transaction_cards(self.current_group)
 
 
 if __name__ == "__main__":

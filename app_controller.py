@@ -1,8 +1,6 @@
-import logging
-import os
-import json
 from expense_classifier import ExpenseClassifier
 from fuzzy_utils import group_similar_transactions
+from utils import generate_transaction_id
 
 class AppController:
     def __init__(self):
@@ -13,11 +11,15 @@ class AppController:
     def set_transactions_df(self, df):
         self.df = df
 
+    # def get_unclassified_transactions(self):
+    #     classified_indices = set(map(int, self.classifier.classifications.keys()))
+    #     return self.df[~self.df.index.isin(classified_indices)]
 
     def get_unclassified_transactions(self):
-        classified_indices = set(map(int, self.classifier.classifications.keys()))
-        return self.df[~self.df.index.isin(classified_indices)]
-
+        classified_ids = set(self.classifier.classifications.keys())
+        return self.df[
+            ~self.df.apply(generate_transaction_id, axis=1).isin(classified_ids)
+        ]
 
     # def get_grouped_transactions(self, target_row):
     #     # Assuming self.df is your DataFrame of transactions
@@ -35,3 +37,24 @@ class AppController:
 
     def save_classifications(self):
         self.classifier.save_classifications()
+
+    # def auto_classify_high_confidence(self):
+    #     """
+    #     Scan unclassified transactions and automatically classify those
+    #     with very high confidence predictions.
+    #     """
+    #     unclassified_df = self.get_unclassified_transactions()
+
+    #     for idx, row in unclassified_df.iterrows():
+    #         predictions = self.get_prediction(row["Details"])
+    #         top_prediction, top_prob = predictions[0]
+
+    #         if top_prob >= AUTO_CLASSIFY_THRESHOLD:
+    #             self.classifier.classifications[str(idx)] = {
+    #                 "Description": row["Details"],
+    #                 "Category": top_prediction,
+    #                 "Method": "auto"
+    #             }
+
+    #     self.classifier.save_classifications()
+

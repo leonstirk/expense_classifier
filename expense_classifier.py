@@ -31,10 +31,31 @@ class ExpenseClassifier:
     #     self.classifier.fit(X_train, y_train)
     #     logging.info("Expense Classifier trained successfully.")
 
+    # def _train_model(self):
+    #     """Train the classifier with confirmed expense classifications."""
+    #     if not self.classifications:
+    #         logging.warning("No training data available.")
+    #         return
+
+    #     descriptions = []
+    #     categories = []
+
+    #     for entry in self.classifications.values():
+    #         descriptions.append(entry["Description"])
+    #         categories.append(entry["Category"])
+
+    #     self.label_encoder.fit(categories)
+    #     y_train = self.label_encoder.transform(categories)
+    #     X_train = self.vectorizer.fit_transform(descriptions)
+
+    #     self.classifier.fit(X_train, y_train)
+    #     logging.info("Expense Classifier trained successfully.")
+
     def _train_model(self):
-        """Train the classifier with confirmed expense classifications."""
+        """Train the classifier with known expense categories."""
         if not self.classifications:
-            logging.warning("No training data available.")
+            logging.warning("No classifications available. Skipping training.")
+            self.is_trained = False
             return
 
         descriptions = []
@@ -44,11 +65,17 @@ class ExpenseClassifier:
             descriptions.append(entry["Description"])
             categories.append(entry["Category"])
 
+        if not descriptions or not categories:
+            logging.warning("Empty training data. Skipping training.")
+            self.is_trained = False
+            return
+
         self.label_encoder.fit(categories)
         y_train = self.label_encoder.transform(categories)
         X_train = self.vectorizer.fit_transform(descriptions)
-
         self.classifier.fit(X_train, y_train)
+
+        self.is_trained = True
         logging.info("Expense Classifier trained successfully.")
 
 
@@ -77,8 +104,20 @@ class ExpenseClassifier:
     #         json.dump(self.classifications, f, indent=4)
     #     self._train_model()
 
-    def predict_category(self, transaction_detail, top_n=2):
+    # def predict_category(self, transaction_detail, top_n=2):
+    #     """Predicts the expense category for a transaction."""
+    #     X_test = self.vectorizer.transform([transaction_detail])
+    #     probabilities = self.classifier.predict_proba(X_test)[0]
+    #     category_indices = np.argsort(probabilities)[::-1][:top_n]
+
+    #     return [(self.label_encoder.inverse_transform([idx])[0], probabilities[idx]) for idx in category_indices]
+
+    def predict_category(self, transaction_detail, top_n=3):
         """Predicts the expense category for a transaction."""
+        if not getattr(self, "is_trained", False):
+            logging.warning("Prediction attempted before training. Returning empty prediction.")
+            return []
+
         X_test = self.vectorizer.transform([transaction_detail])
         probabilities = self.classifier.predict_proba(X_test)[0]
         category_indices = np.argsort(probabilities)[::-1][:top_n]
