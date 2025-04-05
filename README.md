@@ -23,19 +23,60 @@ This project is a work-in-progress with long-term goals of real-time budget trac
 
 ### Phase 1: Personal Insights
 
--
+- **Transaction summaries over time**
+    - Weekly and monthly grouping
+    - Compare vs. rolling average (3m, 6m) or all-time
+- **Category-level trends**
+    - Grocery spend over time
+    - Identify top categories per month
+    - Visuals: line plots, bar charts, percent changes
+- **Reclassification tools**
+    - Click to change category on past transactions
+    - View transactions by class (filterable table)
+- **Clean visual summary UI**
+    - Embed charts or summary tables below cards
+    - Use tabs or collapsible panels for clarity
+- **Save historical data across files (persist classification + metadata like date)**
+- ** Handle date parsing + weekly/monthly grouping**
+- **Add `matplotlib`/`tkinter-canvas` for simple charts**
+- **CLI or GUI reclassification view (by class or vendor)**
 
 ### Phase 2: Automation
 
--
+- **🔄 Data automation**
+    - Daily or real-time bank transaction sync (e.g. email-to-CSV, scraping, API)
+    - Automatically append new transactions to history
+    - Alert when over weekly/fortnightly budget threshold
+- **📈 Real-time insights**
+    - Show “current week” progress vs budget
+    - Forecast remaining discretionary funds
 
 ### Phase 3: Generalization & Distribution
-
--
+- **🧭 User-friendly setup**
+    - Generalize column mapping (user picks "date", "amount", etc.)
+    - UI for setting ignored terms
+   -  Clear instructions for different bank CSVs
+- **📦 Packaging + Docs**
+    - Clean repo structure
+    - Markdown docs for setup, usage
+    - Add sample data + screenshots
+    - Write blog post (walkthrough + architecture)
 
 ### Phase 4: Web App Conversion
-
--
+- **🔐 User platform**
+    - Login/signup system
+    - Upload CSVs securely
+    - Store classification data per user
+- **📊 Dashboards + Budgeting**
+    - Interactive dashboards (weekly/monthly trends, progress bars)
+    - Editable budgets
+    - Alert system (email/SMS/web)
+- **🛠 Tech stack**
+    - Backend: FastAPI or Flask
+    - Frontend: React or Svelte (with Plotly or Chart.js)
+    - Auth: OAuth or custom
+    - DB: PostgreSQL or Firebase
+    - Hosting: Render, Heroku, or self-hosted
 
 ---
 
@@ -43,14 +84,14 @@ This project is a work-in-progress with long-term goals of real-time budget trac
 
 ### 🔭 GitHub Project Board
 
-Track development progress, features, and bugs: 🔗 [Project Board](https://github.com/your-username/your-repo/projects/1)
+Track development progress, features, and bugs: 🔗 [Project Board](https://github.com/leonstirk/expense-classifier/projects/1)
 
 ### 🎯 Milestones
 
-- `v0.5` - Core desktop functionality: classification, summary, reclassification
-- `v1.0` - Weekly/monthly analysis, auto-import, real-time alerts
-- `v2.0` - Web app prototype, multi-user dashboard, hosted release
-
+- `v1.0` - Core desktop functionality: classification, summary, reclassification etc
+- `v2.0` - Automation: weekly/monthly analysis, auto-import, real-time alerts
+- `v3.0` - Generalisation & Distribution: documentation, etc.
+- `v4.0` - Web app prototype, multi-user dashboard, hosted release.
 ---
 
 ## 🛠 Getting Started
