@@ -40,28 +40,8 @@ class AppController:
     def save_classifications(self):
         self.classifier.save_classifications()
 
-    # def auto_classify_high_confidence(self):
-    #     """
-    #     Scan unclassified transactions and automatically classify those
-    #     with very high confidence predictions.
-    #     """
-    #     unclassified_df = self.get_unclassified_transactions()
-
-    #     for idx, row in unclassified_df.iterrows():
-    #         predictions = self.get_prediction(row["Details"])
-    #         top_prediction, top_prob = predictions[0]
-
-    #         if top_prob >= AUTO_CLASSIFY_THRESHOLD:
-    #             self.classifier.classifications[str(idx)] = {
-    #                 "Description": row["Details"],
-    #                 "Category": top_prediction,
-    #                 "Method": "auto"
-    #             }
-
-    #     self.classifier.save_classifications()
-
     # Function to show the most common tokens in the transaction descriptions
-    # Development only. Comment self.controller.show_common_tokens() in load_file()
+    # Development only. Comment self.controller.show_common_tokens() in load_file() for production
     def show_common_tokens(self, top_n=30):
         if self.df is None:
             print("No data loaded.")

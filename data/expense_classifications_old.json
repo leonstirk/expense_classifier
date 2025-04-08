@@ -1,0 +1,1797 @@
+{
+    "456947c79faf1a4b46b7016de135f7b87381a9cd98b44fd869a1904e29be14d3": {
+        "Description": "From 02-1245-0170846-003",
+        "Category": "TF Leon",
+        "Source": "manual"
+    },
+    "d459a45fae83c2060776953e82180fc8d3c4cfa33dc8a3a3a9d53a3470313b1f": {
+        "Description": "From 02-1245-0170846-003",
+        "Category": "TF Leon",
+        "Source": "manual"
+    },
+    "e8452f87808c8ed51cb22be810ec0db777f2fa8f5adb3fc04cff7b7117a5f263": {
+        "Description": "From 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "87c5e4e732c505f102dd5534f18d17cd3ad327bab029d6aaa05bdb4d34a140ab": {
+        "Description": "POS NEW WORLD METRO WILLIS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "65f7619831382f69d63eeceacd264502a0789b8c872ac69480f0d0798539a75e": {
+        "Description": "POS GREENLAND CAFE",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "6412efefcd5c279aa5301713575e5cf5fdcfff8205f3254c51638d551c0f0bbf": {
+        "Description": "POS GREENLAND CAFE",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "487223759961d9f05d2aa476aff0d1febd43b042df1cbc354f52b11128d154c5": {
+        "Description": "POS GREENLAND CAFE",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "632f0335c5c15ce24d48841628a262bf55bed37bda3c9a21c2e3bbaf37d6f9ae": {
+        "Description": "POS GREENLAND CAFE",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "e8014727353de64571ace959165f9e7aa1fef0a393de3a7a832b920db04bc8db": {
+        "Description": "POS NEW WORLD THORNDON",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "d35e51c3d5e502fe9120389b707e87d385d5ec0c2d9c72ecee350d3a3da03301": {
+        "Description": "POS NEW WORLD THORNDON",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "5de0a204f5aba0c5104944c8395f56c6446f9c58093460c4bdb9c8252577f916": {
+        "Description": "POS NEW WORLD THORNDON",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "1526b5450264c48c3b277beec05b9b4070a6efd361ec0b09555260ff40f4662e": {
+        "Description": "POS NEW WORLD THORNDON",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "77cd50aa43f52cd738139cd88a8ab9293618f0c73f05ad1d772d8e0f90d99e90": {
+        "Description": "POS NEW WORLD THORNDON",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "bfe9a7cfb35e4f9a5a4604c78babaefef3f0d6d89a9c9e82d9d8a411ae74bacc": {
+        "Description": "POS NEW WORLD THORNDON",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "54a330730b0d4853ef13507622068c5c3116980b1cdff8ffc53903fdd9f94a90": {
+        "Description": "POS NEW WORLD THORNDON",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "a4455606fc8d1ba6c1e119fa9d0d4e29ff3fdf99a73efab9da1a3e7974ff91cf": {
+        "Description": "POS NEW WORLD THORNDON",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "1d252ee0148cef8f29a22b5dafdaea289b83899ff7cb0f6e3839d012f42e7b83": {
+        "Description": "POS PB Technologies Welling",
+        "Category": "Household durables",
+        "Source": "manual"
+    },
+    "9ed5758903d7d381ee2729c37a95cc093731ebc085014928f6c0d2f392f6cec1": {
+        "Description": "POS PB Technologies Welling",
+        "Category": "Household durables",
+        "Source": "manual"
+    },
+    "3a815611c17b50c499e7ade46eae94b5021b69bbc4293b4a070034aceb4c2bee": {
+        "Description": "To 02-1245-0170846-031",
+        "Category": "TF Joint saving",
+        "Source": "manual"
+    },
+    "b1df8f613d2f08efa00985920d4e9a5de037959b035da734855424522efb8207": {
+        "Description": "To 02-1245-0170846-031",
+        "Category": "TF Joint saving",
+        "Source": "manual"
+    },
+    "f8683d2c6f8d10ae1aaf5ac00fc4e55c65e4a7c6102e2059e16295397e5f4fbe": {
+        "Description": "To 02-1245-0170846-031",
+        "Category": "TF Joint saving",
+        "Source": "manual"
+    },
+    "0851a7449d807742345e9d9d13fc9306aefa1c1998d5f753a01817aa17bb568c": {
+        "Description": "From 02-1245-0170846-031",
+        "Category": "TF Joint saving",
+        "Source": "manual"
+    },
+    "0308bcca8180e51040086b78eb15c56fd7bfff24edbe52f7bb9d13af44d125b4": {
+        "Description": "To 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "924b80fd51fd2842ed5b8729d56e83d908444c614eaf6209b45917bf989cad90": {
+        "Description": "To 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "84356bc9052162d459ba2599f23e2e21c325acb7478abce9f9a32a8822edf983": {
+        "Description": "To 02-1245-0170846-001",
+        "Category": "TF Bills",
+        "Source": "manual"
+    },
+    "b6131d954eb328ae810ef83d0bd2c1439ca99e93fb140135f5803d8816a635c1": {
+        "Description": "To 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "8bb0339f449141922264a87f982ef521dffe406fc57498153dacda71d1ba9677": {
+        "Description": "From 02-1245-0170846-031",
+        "Category": "TF Joint saving",
+        "Source": "manual"
+    },
+    "6825b0da3ce28b4a2d6fcab99f90731e9780cebf9145a3b079e5e4db512ff6fa": {
+        "Description": "To 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "2abed90257b37fdc29913df0cbe3d23004ee805e3cd5e0ef7f834115e126f1ba": {
+        "Description": "To 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "e7ff91725c58205b4a98d65d6ba7f03704df25332bfceb4a98ca4b0af5633545": {
+        "Description": "From 02-1245-0170846-031",
+        "Category": "TF Joint saving",
+        "Source": "manual"
+    },
+    "7887b006d77c246cd89aa8680fcabf7822a7c885562906c22a064c4c5dd2499f": {
+        "Description": "To 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "516fdc0077861c76913264bfcb47b4fff64378824eb2a8edcc96692ffaccac5c": {
+        "Description": "From 02-1245-0170846-031",
+        "Category": "TF Joint saving",
+        "Source": "manual"
+    },
+    "49ccbeab9cee5de5390a3b8a2598b417396bacbee9f127741b9ce3ac366a3c6e": {
+        "Description": "From 02-1245-0170846-031",
+        "Category": "TF Joint saving",
+        "Source": "manual"
+    },
+    "47ccc2d9d7c8890a801a7459825322e08e1f47a9127f1ab354b21a135f3b7dfd": {
+        "Description": "From 02-1245-0170846-031",
+        "Category": "TF Joint saving",
+        "Source": "manual"
+    },
+    "0489c30adabeb8fdc91328ec8c0a54766f5f51919f80b8caf102821b48434561": {
+        "Description": "From 02-1245-0170846-031",
+        "Category": "TF Joint saving",
+        "Source": "manual"
+    },
+    "61bbc94c10c8503a2585ae09edf91760b52a145e532116b3cc2a7564a75fcfd0": {
+        "Description": "To 02-1245-0170854-031",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "fa597cd36fcab6e35c4f5094b9dcd9e9e0c83d641a45d2da9fee226d21850e65": {
+        "Description": "To 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "899ac9cee4018c7ab7ce1c295a3346f8a8c6ead69cc9bb83284fc8a96945ee0a": {
+        "Description": "From 02-1245-0170846-031",
+        "Category": "TF Joint saving",
+        "Source": "manual"
+    },
+    "5e9b118fc77ed2b7e2e8a55ff4a8ccb6332fff037ff03d9ad42b9e09d91b57d0": {
+        "Description": "To 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "8e10f6e7e1f74da7abf72ec4c03160b6bfef05bcf170b4e45b4e22410bb7a57c": {
+        "Description": "From 02-1245-0170846-031",
+        "Category": "TF Joint saving",
+        "Source": "manual"
+    },
+    "9935a3a76484e15cbb30eb3c69345c8fc96aa7a01b0d3ecaf5f8d84f90828c15": {
+        "Description": "To 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "4d1119fb45621cd7b478f282761ef4f1d0e1c5f4290a8bef783785fc11fdf245": {
+        "Description": "To 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "f43d5b10b92edd83c2da61f5b773112c446cd75590e19dfc51fa0f8dc6dad6cb": {
+        "Description": "To 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "0ac9d032093a0b69e5f2fe090b47e78a5a48ac2f9e8e01779ffdb6f4b9709f68": {
+        "Description": "To 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "66afdec3df940a86a0c25cdf6b58c78e424eae107aaa73a6eb28d087c8e87a4b": {
+        "Description": "To 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "0573c9c3d8fd7b411988a2c29a9b733112cec379677b9e6872cbd3173b009de8": {
+        "Description": "To 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "dad2fb009d81d5c65b68bdda0205aaccd72a3097cbaba5cbab9b9ad4b9a62424": {
+        "Description": "To 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "8a00eee579041bf074d744fe4bf9d63d49849fca74b7f5e12cab388314a7b8c5": {
+        "Description": "To 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "7e3cc76dab80fe531097e88ee9e1c15924ab315df1e29d59d93cbf384e4a55cb": {
+        "Description": "To 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "38bbbc4268488fb07af3e576777985cc988ffd785cb17079eead28858b2ff2e5": {
+        "Description": "ATM WDL - MANNERS STREET CENTRAL",
+        "Category": "Ballet",
+        "Source": "manual"
+    },
+    "adf308806001f11ceb4ce84e1af522234fd82bd4f8673f0e667cafd3d299f6a9": {
+        "Description": "POS NEW WORLD METRO WILLIS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "c294bb03f7167ca6e557f15bd7a097e2fbc06a654f271015222647c28d17f8c5": {
+        "Description": "POS NEW WORLD METRO WILLIS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "4755b2dadde7755cf39da3d0bfbaf6952e217100bea695781bc4b3394d1334b8": {
+        "Description": "POS NEW WORLD METRO WILLIS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "868707c05d4520b6ab892f1e1825b60ef7f3a6851bd86b2755ed543ab55938cf": {
+        "Description": "POS NEW WORLD METRO WILLIS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "b79071225d6545e7d73b821956a25e26b87bdeb7e663180a429ebaeefa46cfbf": {
+        "Description": "POS NEW WORLD WELLINGTON CI",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "96ec20d0535f0a8d670566aa5cc5a49fa63858384af174abfac51d04383e5f0b": {
+        "Description": "POS NEW WORLD WELLINGTON CI",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "a001ac952cfee65d46fec2c0e8179ee160ae832a5878e5e79711b82db4c7c486": {
+        "Description": "POS NEW WORLD WELLINGTON CI",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "0b85b86a883a57f44f9af114a3340272d7ddfce1c649cee1edcfd15ba641b4d2": {
+        "Description": "POS NEW WORLD WELLINGTON CI",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "0321296b074c395ea9ca2dc9efc45820f5af15991d4621a6c3c57f49791ab100": {
+        "Description": "POS WHITCOULLS 2011 LTD",
+        "Category": "Miscellaneous",
+        "Source": "manual"
+    },
+    "4cb3f00ba7498d4e31fd574676be9024e3ecb81ee1c40719abb4f4e6543fd2d0": {
+        "Description": "POS WHITCOULLS 2011 LTD",
+        "Category": "Miscellaneous",
+        "Source": "manual"
+    },
+    "9288cb097bbc426cf5a9ea334082c7272eb88c4064799557b9342590374e02a9": {
+        "Description": "POS EVOLUTION CYCLES",
+        "Category": "Household durables",
+        "Source": "manual"
+    },
+    "5d29a084d1809989a74a50aaf03dcb1d4484525bc8be469540fc25f7605b1b66": {
+        "Description": "POS CHEMIST WAREHOUSE",
+        "Category": "Health",
+        "Source": "manual"
+    },
+    "cd719e63df6e749d3b6fa61ba737b4d131db1720e25d578f542050e96ba576b9": {
+        "Description": "POS CHEMIST WAREHOUSE",
+        "Category": "Health",
+        "Source": "manual"
+    },
+    "bd73fea310be3c9c53fd143bbb69b5b615627e51369c871ff6312184164337b4": {
+        "Description": "POS collective coffee",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "9547a536fdfbcdff6ab291c5def31669105826d03d9d3771c4ea901e09400247": {
+        "Description": "POS My Foodbag Mealkits",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "403fcb9cdf570db38acd7ebfa36013014799bbf1aafef97d0d2c0fdda8aa4c75": {
+        "Description": "NAENAE PRACTICE 01-0530-0345217-000",
+        "Category": "Health",
+        "Source": "manual"
+    },
+    "2d4c92cdc4f57f025be84feb3435e5fa9c6b792ed2573b87b7db8cdf83c78404": {
+        "Description": "From 02-1245-0170846-001",
+        "Category": "TF Bills",
+        "Source": "manual"
+    },
+    "ca16fe9326acd6a0511a05e46ee95fc33758bcd4fde2656a4de0f1a06cbfbb45": {
+        "Description": "Bus card 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "8e3633b8f3978dc40566f00d6696e88a19839fa7f87ecda7a2aec58a913e62c8": {
+        "Description": "From 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "996f4d262151c0e5ef533531597e62b76255c640ffa8849e4f189e665e382944": {
+        "Description": "From 02-1245-0170854-031",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "e39d7f174885e0782207ce4694185b9d1f9e40f3cfe7285ff39374e12bd3b5d7": {
+        "Description": "From 02-1245-0170854-031",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "093b41a03abbfb5a28c9651a73c48888115612c84a087c76fc4a8aef6dad31bf": {
+        "Description": "From 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "bad1249a8d4757179cc4daf44a2f93ba98b72cf903308a29dee3a528cec628cb": {
+        "Description": "From 02-1245-0170854-031",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "05ad5ea6e1e15470808581a9f5bf56162405568162c1431f15a596a33eb2ff6e": {
+        "Description": "From 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "2687a9ca38b2c3a8a8c7b020ad053420e1b6ae0403be849a73e0cddddeacf187": {
+        "Description": "From 02-1245-0170854-003",
+        "Category": "TF Revolving",
+        "Source": "manual"
+    },
+    "137935aee6dfefc6af7d1e054a8068c332a243c2f84de2be90e82ef846866967": {
+        "Description": "From 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "1cb97f5da833a5af960ee60cf5dd2222d1b420b14c9c1eb1e96c354a7c9f8126": {
+        "Description": "From 02-1245-0170854-003",
+        "Category": "TF Revolving",
+        "Source": "manual"
+    },
+    "ba70a03531654aac43384edf835a4529e096d945c0b0e440fce999f33274ffaf": {
+        "Description": "From 02-1245-0170854-003",
+        "Category": "TF Revolving",
+        "Source": "manual"
+    },
+    "d170e5e05ee49ddfdf7aea1d5eeb0efc485339f2d781247656e7e0c3ce7d4891": {
+        "Description": "From 02-1245-0170854-003",
+        "Category": "TF Revolving",
+        "Source": "manual"
+    },
+    "fb795fd844379c5406f7ccd93846e5f3233b86999a3a7948b51504a502c98132": {
+        "Description": "From 02-1245-0170854-003",
+        "Category": "TF Revolving",
+        "Source": "manual"
+    },
+    "9da78222b248048c31ea3065438e6f6ed1554ce8b4438c9ecc83515d466255ce": {
+        "Description": "From 02-1245-0170854-031",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "cfb6843a2057d41a43a7b822030a539826ecb123b4a7ea383c1c28742342ef54": {
+        "Description": "From 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "db56dbc873938268833c9c1deec1614d97721d6fdeff218ae497bc01e0e9f112": {
+        "Description": "From 02-1245-0170854-003",
+        "Category": "TF Revolving",
+        "Source": "manual"
+    },
+    "610320fa83dde42e4fdbb5b33ccf63c1c550489d91493c5bff8e6170184450ef": {
+        "Description": "From 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "manual"
+    },
+    "2d8be6755f7df1792c08bbbd97319e9b799af1fe6297db8557fbedc99dc12db0": {
+        "Description": "DC- MARSH R Kowtow Jumps",
+        "Category": "Miscellaneous",
+        "Source": "manual"
+    },
+    "83607274498cd7d9a6125332b99ccd8175a1f0d7225174f241471c609c977b3e": {
+        "Description": "POS MOLESWORTH GOODS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "de0d05a3e559cf7a094c40926b0b2443db0165546c288c86b375ff247fe45207": {
+        "Description": "POS MOLESWORTH GOODS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "eb65e75a05e04f148f9cc56ff1f39905d4586bee8ff227487e304c1e994d51fa": {
+        "Description": "POS MOLESWORTH GOODS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "c6c8ff690e409709a46414669a83ddfedd5b315bda18c73fa368d2c52c6a8c25": {
+        "Description": "POS ADVANCE ELECTRICAL WEL",
+        "Category": "Household durables",
+        "Source": "manual"
+    },
+    "0f2ea618caf04df0ef4aed7c6be8b0845a73b002b284f28acad1f0e083296b53": {
+        "Description": "POS ADVANCE ELECTRICAL WEL",
+        "Category": "Household durables",
+        "Source": "manual"
+    },
+    "4d2ce62d3e43ae1f33297bab2a81479a6eb3dfe371c8996beebff7a04138d0a2": {
+        "Description": "POS GOODS RETURNED ADVANCE ELECT",
+        "Category": "Household durables",
+        "Source": "manual"
+    },
+    "ff1171350b0af2d69931640e7375093a1ffd0bd30161ba800bb2d1c3def728f6": {
+        "Description": "POS Bunnings Wellington",
+        "Category": "Miscellaneous",
+        "Source": "manual"
+    },
+    "b8277bab4c33c4ad8b2cd0871e3b959e9df04528721612e2b8f2df985a1be76a": {
+        "Description": "POS Bunnings Wellington",
+        "Category": "Miscellaneous",
+        "Source": "manual"
+    },
+    "c325ac5d53a2de80739c55e9c39167840fc7a2e69b1c478c486ad82ac85ba3bc": {
+        "Description": "POS Bunnings Wellington",
+        "Category": "Miscellaneous",
+        "Source": "manual"
+    },
+    "42f0628f5d82d0bfcc6db6ff8039dfb9874964665b22ede79f9c8880ed30cede": {
+        "Description": "POS Aesop Wellington",
+        "Category": "Health",
+        "Source": "manual"
+    },
+    "6d12014c43d6ebfefb3aea36ddb787a7aebcca9c579430521b1e43bc956473e8": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "52a01fad3c683056638b33e265405433fc0a3fdd9ad97087618868b028e127c6": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "2ddafdc31ef15e7f6cbbaa32746324061a82c6a48c84e2d0c37cef7b4609931d": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "f05502016e8c4db6d8b5dd1edbcdcd784b2b65821f888e3bfecb525537e510c2": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "42bde08e47656f2fdde778a8385bf04ce179c357eaa0be020617667e306db408": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "d04fec67d5be392bfda6b392df591fb1b5ff9c4830fe00415f328783f17aa230": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "93cd2b5fc507bbf01e0a761ea5bb21833e98acc1669e650c5f4efb6100a19617": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "66a8acc9339487e633b6925ac9debee871c5e68df7bb28da36bbe373bb597426": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "13018fff8cbacee1fc80f3164eacdff49468c20c56d3984a34b3db4691f8d0f8": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "fe38de58dee372abbda5d031589f221d42e659770beed672c4439baccd63ec18": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "ae0a40b25c5210fa02b58c2239b995fec05ba8428c3c669355d0ac14bdbf2a79": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "85ac3951c82c98341cdd9683e2c60e383592ee1b90061455705364a632775bfc": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "355d3ed6e6acdef37f1c720987219c80f7379ae759d795dd73e25f45130266fa": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "ae6eda77f2bbb852ce59e73baa5b4e9e25d979d9d2cf5276bfa51bce7e815ce7": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "25f66f4d7d293da84b11ebd5cb448e5236acc4eccc011026dd32c2d567dacee0": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "d3a6a9727dccd569b73e8d42acf7d92c3caca2d612eb763fa065fb9014fd38fd": {
+        "Description": "POS Caffe L'affare",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "41239b51fca385899d509d69116c01f72a68b22acd60b7b35d2dc868c320d16a": {
+        "Description": "POS Caffe L'affare",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "21fb188149a71f8fe2ec63e88a7ccb5dddec615b0104b162466f78c705760923": {
+        "Description": "POS Caffe L'affare",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "2bc801ac1578c65dbc9f32d259a3511881f168333a75c2f332df4d2f694b8a74": {
+        "Description": "POS F2C*FOREST AND BIRD",
+        "Category": "Charity",
+        "Source": "manual"
+    },
+    "48c7d92445c6fc6f1b288e1a3ee35f18bf7ebbccf8a5af5c1be05ad3b387268a": {
+        "Description": "POS F2C*FOREST AND BIRD",
+        "Category": "Charity",
+        "Source": "manual"
+    },
+    "8a8e07198ab86da5c4e6e91f39507944af635ce3f4a9ba05c68a2a1e2691dad4": {
+        "Description": "OL-EFTPOS SkinnyMobile 8ff44ad5-26d",
+        "Category": "Phone",
+        "Source": "manual"
+    },
+    "c249fbb1d1a16ea05b2437f9236cc1b43da249c4cb7edc21cead287e215ba38d": {
+        "Description": "OL-EFTPOS SkinnyMobile 00856f57-6f7",
+        "Category": "Phone",
+        "Source": "manual"
+    },
+    "80f3b84edcf974859547cbd95faba19aca96381fb7f91abd5a344e4e90fb761c": {
+        "Description": "POS CUSTOMS",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "50d663d4c227e2ee5ef95a078c14401383b1dfcdac08a1a33b30bfc51ed8a117": {
+        "Description": "POS SHEVINGTON FARM",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "c13515b2d0a8daf0d6b1eccb296ec3f1247a6f50bec991d654bd1bfd177b43ba": {
+        "Description": "POS SHEVINGTON FARM",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "1264dc133cbb6e5e876f95ef7396ec61be23807074f457b97c87ca6c7a8a23a8": {
+        "Description": "POS Jake Lee Vege",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "2a7721637f00556b4acfd61741cd734f9a8b036007902b79593b6fcf8e1451bb": {
+        "Description": "POS Jake Lee Vege",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "a8a5eb34361c50f6a1b524be2079c046ab7d137ce4d366412765b55bb0a760c2": {
+        "Description": "POS Jake Lee Vege",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "4ebbaeb9da6498975bbb4c68444df2534f23df9f5b2d25198796bd9092f17999": {
+        "Description": "POS KFC KENT TERRACE - 535",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "192525c719b79d0b02f83c554075f7e415eff9540d390596f9c0914984b821a8": {
+        "Description": "POS GELISSIMO",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "a9ea94246580dd60b3d3303eee875fa39296c6b6574b1ba0626ca02ca98f06b8": {
+        "Description": "POS ROTI BAY FOOD LIMITED",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "103c78070a1cd1d8e812489f5b59d5c249ee5121c85454359adea8b9bcfd17d2": {
+        "Description": "POS DANIELS KITCHEN",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "01bc6f97cbd3750468ae86c2cfbbdfd5fcc81f414073ae657fe6f26d7c1cfe2d": {
+        "Description": "POS Snapper Services",
+        "Category": "Transport",
+        "Source": "manual"
+    },
+    "502b71a37c667679872b584f62c6c4fec52d31c6dd497645a9c12eb169201380": {
+        "Description": "POS Snapper Services",
+        "Category": "Transport",
+        "Source": "manual"
+    },
+    "d85c3a982eb77b554947101f6702845b330f7b91b53f82c892065353acb70211": {
+        "Description": "POS Pennys",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "36816d21fbf8333e96ccb1eba1de75e2068f7aee0a5e3faafd07928228c44e9d": {
+        "Description": "POS Pennys",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "0fc70a0eac741a54b84a099ad8e8f15915b9f518c3fcddc6904e326024bc826e": {
+        "Description": "ATM WDL - LAMBTON QUAY",
+        "Category": "Ballet",
+        "Source": "manual"
+    },
+    "b8c71b11bb0b68f76ff56783f97bb845426c14fa72fdf0917f5873af60c3749f": {
+        "Description": "POS NEW WORLD KARORI",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "c27ff8b77c987da2e97df17e32dfdcc65adf30cad8b4e470315444ede4d0f33d": {
+        "Description": "POS NEW WORLD CENTRE CITY",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "f365b1a229daee088750109c88a656d13c3543dafa572e4373105ebcf023ef21": {
+        "Description": "POS NEW WORLD CENTRE CITY",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "8acf7ed45b7275e209ec48f170aeccf31f956ab09de3f8e0b1ce13a4b4dd716a": {
+        "Description": "POS NEW WORLD CENTRE CITY",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "133c94e652127d9c8e24049fd8d2269d4b4ed2160de1274a8657176470a8cced": {
+        "Description": "POS Fresh Vege & Fruit L",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "14965d96b38bee8ec0fab6d936678e9bcd9bc98dc51f2a26254572b85f20c426": {
+        "Description": "POS WOOLWORTHS NZ 9066",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "820de17a97465df836bbffe1b990418bbb949fec09f701a037c9dc5f7b826391": {
+        "Description": "POS WOOLWORTHS NZ 9066",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "24c5df3a843a53a6413ea173bed87d1dbab3677385a8a84dc6eeea4f52a64eb5": {
+        "Description": "POS WOOLWORTHS NZ 9066",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "f7d2445ecae3ff5a9e190ac0b2e1c7a6184839d2ef198bfabc15787607fabf55": {
+        "Description": "POS WOOLWORTHS NZ 9066",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "864150d657fd0128faedfe77e30d096f2645547c414aec97ed0fb27a8a3034e9": {
+        "Description": "POS WOOLWORTHS NZ 9066",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "58c883ccecdad475effd15e566c05e3112055333af828952db12fac146083003": {
+        "Description": "POS WOOLWORTHS NZ 9508",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "24cf3a79259ea1d850b408945d91830ee9f3505cbb228ee6564c6e5b7df68b0f": {
+        "Description": "POS WOOLWORTHS NZ 9190",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "976c0742e639e73a857ad6f723eb77e12738d6387c15c41ca347fea28b9c6c6a": {
+        "Description": "POS BACKBENCHER LIMITED",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "a2d01e006bcf2674db1a718d0265aae0fdc240302b42bc7350519f87bd182261": {
+        "Description": "POS La Cloche Limited",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "087b8028f73f63972148491d59d7401e25dae7920f7a13e243c68f7a13abd8f8": {
+        "Description": "POS La Cloche Limited",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "6f92e5a8d3da534fd85f8a6452f7f569d0be57549a6ccefe9fc1b9660bf7316c": {
+        "Description": "POS WOOP LIMITED",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "525d980068e3ac01a7d3dec721d97cea7846d5e3c042a55e4f24a82d419c2a01": {
+        "Description": "POS SMK",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "c3e131be726282da8b14a43c3f03e394e767567f25ff50f37198b7b5593df481": {
+        "Description": "POS Airspresso Dunedin",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "bd428d1305183ca86d40a534ab57a2f8067133d0a61bd752eadde66b44ce4349": {
+        "Description": "FOREIGN CURRENCY CONVERSION FEE",
+        "Category": "Web services",
+        "Source": "manual"
+    },
+    "f70ad57f8504bed05fa9951da4e10927395fa296b2eed472711e22537de55a1b": {
+        "Description": "FOREIGN CURRENCY CONVERSION FEE",
+        "Category": "Web services",
+        "Source": "manual"
+    },
+    "4fe58f2e7ac570cad5ed67ce0973150a38eb47623b0130c911179c5f9106a775": {
+        "Description": "FOREIGN CURRENCY CONVERSION FEE",
+        "Category": "Web services",
+        "Source": "manual"
+    },
+    "b0a784132eee06e0b73206314784d9ba816c82e91ced3d9584e99f8954780ab0": {
+        "Description": "POS EUR 4.99 PROTON AG* PROTON",
+        "Category": "Web services",
+        "Source": "manual"
+    },
+    "521b851d3ed7f1fdbd41ecffe32796ea6f2492ada38a8121dd230fff33c41344": {
+        "Description": "POS EUR 4.99 PROTON AG* PROTON",
+        "Category": "Web services",
+        "Source": "manual"
+    },
+    "edff57541dc0ed969a04715cb20909fe3dcf94687bd748d303c8b6f6f60c6d74": {
+        "Description": "POS AIRPORT SHUTTLES DUNED",
+        "Category": "Travel",
+        "Source": "manual"
+    },
+    "07f0db10543f3c1a5ca48deef3a8e88954aee779c1ae8b4526fa7dde9de6218f": {
+        "Description": "POS WASTE MANAGEMENT NZ LT",
+        "Category": "Emerson",
+        "Source": "manual"
+    },
+    "3137f2bd177b27796ea7a8e20b1f3bd36ca1bfa94ac012bdbda1b01f870ffc9a": {
+        "Description": "POS WASTE MANAGEMENT NZ LT",
+        "Category": "Emerson",
+        "Source": "manual"
+    },
+    "e72040a9fb44e6a30e6039d17b6a4b748c39a06d17570a6331d578215ed7bf46": {
+        "Description": "POS WASTE MANAGEMENT NZ LT",
+        "Category": "Emerson",
+        "Source": "manual"
+    },
+    "6ad257495d9df82cb01c44c1453fe5651164e8932f86e754e6e4c6aadd0b9cb8": {
+        "Description": "POS WASTE MANAGEMENT NZ LT",
+        "Category": "Emerson",
+        "Source": "manual"
+    },
+    "da5b14fccc8fd860a05e8c6caec5bc348aa93711821b2d974ad5837eeac57aa0": {
+        "Description": "POS WASTE MANAGEMENT NZ LT",
+        "Category": "Emerson",
+        "Source": "manual"
+    },
+    "61fa10699c15621060dc209b257aee6bd9ab010e9c1c237b662dc6c7b5e48756": {
+        "Description": "POS CONCORD INN LTD",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "1a91f4568e74fb5b900dc97effdf68d617e3ee4199cfbdb1c7a394057486943b": {
+        "Description": "POS BURNSIDE FUEL STOP",
+        "Category": "Car",
+        "Source": "manual"
+    },
+    "dccf019e8eb8f4fe06809ce00eb2caccd73657a4baff8596a90a29aaf8949863": {
+        "Description": "POS BURNSIDE FUEL STOP",
+        "Category": "Car",
+        "Source": "manual"
+    },
+    "3da1144f7da16438b5b57aeedc065b06626e81b8bfafda57238cd5911c8e23d3": {
+        "Description": "POS Pack And Send Dunedi",
+        "Category": "Emerson",
+        "Source": "manual"
+    },
+    "2a35cb6480a1aea425957c0b854e41e03ceaf3203526d6fb6e95b6e317958f93": {
+        "Description": "POS Pack And Send Dunedi",
+        "Category": "Emerson",
+        "Source": "manual"
+    },
+    "10f94f956890c10e1d47b9ac5f8a9affa434c927f49da78ecb0a907398ad81be": {
+        "Description": "POS THE FOOD ROOM & CO",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "6369406ede6d488ba0b99f359aa698b5e82a7e2961d5f2551edf37d445b557c7": {
+        "Description": "POS THE FOOD ROOM & CO",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "b78ad12d5baae90ba90aafc622b1e5c3aa81de9a2e2ea63bc16197db9b5bf422": {
+        "Description": "POS AMAZON WEB SERVICES",
+        "Category": "Web services",
+        "Source": "manual"
+    },
+    "e212b878baee2fa7e1a1c3e937592a663fa77f48e549d5f762e692f9e6b7b824": {
+        "Description": "POS AMAZON WEB SERVICES",
+        "Category": "Web services",
+        "Source": "manual"
+    },
+    "13ac32e97522e41a70e4430d88b116d9bb2974fe9ba4edd6368539441cdf7b9b": {
+        "Description": "POS Subway Andersons Bay Du",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "1d774cd28610749629c19e04f28619d35d3ca08496155ee55ad151490a82d00d": {
+        "Description": "POS Subway Andersons Bay Du",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "dd635e3859e3ac52b1e93fa993da3224cf759a8f6317b3a9882c1d93d047e0b1": {
+        "Description": "POS MDONALDS ANDERSONS BAY",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "9f5ac95449f4ca53a4f3c4ba68c1022778a331ce4b01d7f2c375ff24e5078bf7": {
+        "Description": "POS MITRE 10 MEGA - DUNEDIN",
+        "Category": "Emerson",
+        "Source": "manual"
+    },
+    "d3265f0f3e50382326f8349fec177da16ccf6aacc75e6db5d836d102023d7ee6": {
+        "Description": "POS MITRE 10 MEGA - DUNEDIN",
+        "Category": "Emerson",
+        "Source": "manual"
+    },
+    "82563356ecf4168cadaa52437c7f748abcaa87981c4ebf31ba57574102838042": {
+        "Description": "POS MITRE 10 MEGA - DUNEDIN",
+        "Category": "Emerson",
+        "Source": "manual"
+    },
+    "fa63e33791ed45d2c1c940b97ab728aa9a3896dd3e062af3f24fb3abebfe3652": {
+        "Description": "POS FRESHCHOICE GREEN IS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "522195e1cabf777391e7d4c2fadb6bbd9126c86d862350c915cb7ad2d9341752": {
+        "Description": "POS FRESHCHOICE GREEN IS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "0674800240489d830db772d61de160fb6e36fb8220e0d4a4f66637f9175453c6": {
+        "Description": "POS FRESHCHOICE GREEN IS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "3e7f6f99279ac7506df5d95d4ac92d17c853cb42085e0be3a18a9f10e1eb5774": {
+        "Description": "POS FRESHCHOICE GREEN IS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "95b66a29cc86397960060a392b54d7fe763520b84325a98cad5a1a75428bb58a": {
+        "Description": "POS FRESHCHOICE GREEN IS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "b5c1605defc054687b6e2ac7132d89a6d2de455c018c1b035336f465d2352f5c": {
+        "Description": "POS RE BURGER",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "fa1cdbcbdc35d379c512a02d7349fda67f87b2564e18901f6c6ad45c5b402a10": {
+        "Description": "POS Freds Sandwiches",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "df0392f428137bb85eea791a4bb27de74b43303690c2d66929fab93e4368ee8d": {
+        "Description": "POS TRADEME 7D3U PING",
+        "Category": "Miscellaneous",
+        "Source": "manual"
+    },
+    "1b3c3408aeac41331d2b40b04c0765a2f715dad32f3c43bf47dc01cff069192f": {
+        "Description": "Greer 03-0859-0284114-000",
+        "Category": "Ballet",
+        "Source": "manual"
+    },
+    "eb2e84e1e8f63aa4777a93ebb27af4808830b4f7d2bc158950a7991905505c33": {
+        "Description": "POS LUNCH MONEY",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "863fb47700531821346d1430b0949e2604006610f4abd377488c12199450a2f1": {
+        "Description": "POS CAVERSHAM PHARMACY",
+        "Category": "Health",
+        "Source": "manual"
+    },
+    "fa6e12bde1d047b53fb41d93c6250b07a4d68fba0681feca97aa3b93e936a172": {
+        "Description": "POS VOLCO The Terrace",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "9a3b6892a4624bca2fa9c46a5795676f60611f869ebe663050fabfe6210d9675": {
+        "Description": "POS USD 23.00 OPENAI *CHATGPT S",
+        "Category": "Web services",
+        "Source": "manual"
+    },
+    "42c0d69187d4d775318803e151c0191889f60fcb903e21e1257345f7ef48d074": {
+        "Description": "POS Thistle Inn",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "df63957d15bf3eb0e8de8fffffa6da2a9e41870308ba9aeeeaf8d31204f98e77": {
+        "Description": "POS Thistle Inn",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "811dc6c1222f869b430bab1447bef7035f954c1e39b9126d54a3655e35f6c11c": {
+        "Description": "POS Copperfields",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "f85642433713e4313cbf11225f7c2e56fabac2303d70e9d63cb978bf12f0af07": {
+        "Description": "POS Warehouse Stationary 31",
+        "Category": "Miscellaneous",
+        "Source": "manual"
+    },
+    "eb1042e40fcabde47ec48b837e7b6dca5dd9a03867a1ef90f24b1cfe934db6f2": {
+        "Description": "POS Dunedin City Council",
+        "Category": "Car",
+        "Source": "manual"
+    },
+    "5d7c72ab936f146cd9b3d57fad8146f3b3c622fd5739cb3bd5736a03a6aa5f25": {
+        "Description": "POS Dunedin City Council",
+        "Category": "Car",
+        "Source": "manual"
+    },
+    "e58de429c5f361bfb2324c219dde527ca45ea4ab415d92131e835421c3ed46e4": {
+        "Description": "POS FRESH CHOICE FEATHERSTO",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "2188581d6bdc146f523156148784e8678d760b45186dc986358a77c399423759": {
+        "Description": "POS Big Lizard",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "aa4ee6a9a641fb3ec8aadd013f8da2f6caa3ce2394a51ca51d1ac4124cc83739": {
+        "Description": "POS Air NZ Online",
+        "Category": "Travel",
+        "Source": "manual"
+    },
+    "253bfe45f7303218a01d60bc55c70fa01be37bcf39cfc02bc92f8da3b5e02c74": {
+        "Description": "POS NPD GREEN ISLAND",
+        "Category": "Car",
+        "Source": "manual"
+    },
+    "2095708331cc621a5f223427200377319e68dce5b13302736ba1aeefc6364687": {
+        "Description": "POS C & L Fresh Hub",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "bee01961785b480c4a2853374610388ed743cc215139099385fecd3d614b89a3": {
+        "Description": "POS SKINNY MOBILE (3)",
+        "Category": "Phone",
+        "Source": "manual"
+    },
+    "0843dd58606ed31f9652551c942509c34f1dad9362acfee8d2caeda9af74ce84": {
+        "Description": "POS SKINNY MOBILE (3)",
+        "Category": "Phone",
+        "Source": "manual"
+    },
+    "8b7cd5e234ffba604fc2e3b9e37e73cb7df5a0024ee669f20da551a9fd8daee6": {
+        "Description": "POS MOJO ROCK",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "a7f3b49ff362a0b04c27673fce37207ffe35de9f2a58a200e24c644b6c64f1c3": {
+        "Description": "POS GREENLAND CAFE",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "e881ffe15fc37ce8205836d2a8172c9b8d2e410b19f50df3558897e5dd858d97": {
+        "Description": "POS GREENLAND CAFE",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "4f4b04ae26bc9937871014f5476961b6e353a1a39f05ccaa05e2bad6546ce1fd": {
+        "Description": "POS GREENLAND CAFE",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "d98ddea64d6ab6cc8b4ef32964fc64124dad852ef8dfde9817e72b0975628e7e": {
+        "Description": "POS GREENLAND CAFE",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "0b65bd03cea3ab5e5a0471b4f12ef619b8698eb82fe9f6d776b40dcecb26e869": {
+        "Description": "POS GELATO ON CUBA",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "70759256e08ad1cf7aefc981a5cd71ab372bd46867ce1c17690701f05648cd54": {
+        "Description": "POS 1154 Pastaria",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "c8fbfb93b059fb82fd2e2342c393a6a020984cd75505a1314e529ef64bfbd344": {
+        "Description": "POS CMM BUS HUB",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "f10ed602a9a8f92495f2920f8d0e2d87bf96f286e293d2a1a27eadcea5c40c09": {
+        "Description": "POS Big Barrel Concord",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "a786a15fd5fcbd665e969dd849d65b86e3e2320097dd7ebec1a0c53776256c15": {
+        "Description": "POS Mecca Wellington",
+        "Category": "Health",
+        "Source": "manual"
+    },
+    "b90af5225d0295ace20457f14afba97d052c7c71543737eb8d7b5e9ac5bb4e22": {
+        "Description": "POS TJ KATSU LAMBTON",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "d0f499b5059dda473f0688c400d077d6ba2ed67c8dc541d761438f88165a13c6": {
+        "Description": "POS Raglan Roast Holland",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "3faa5840c5131a720ae971fb44770cf472d9a261a06eb6e41da95aa585377077": {
+        "Description": "POS CambridgeCornerConvenie",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "b5f0cbbfacce6c2aed6eded51e4151c4d9d30175078a29fbb0ee9cb1ed7583d2": {
+        "Description": "POS PHUTHAI ESARN REST",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "d3125b8449dbd983656d0c066e3d84b21b9bbe6e9f66a6746f28fb046f7c4c41": {
+        "Description": "POS STUART STREET POTTERS C",
+        "Category": "Miscellaneous",
+        "Source": "manual"
+    },
+    "efa7fa3749fe8195060cdeb4f0128b4cc72c5192963d6df5c901b27fe3602b48": {
+        "Description": "POS Maggies",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "39d8c08a838d924a033c5bc37467a799b7a24f54a329d63a26b4a401623022bc": {
+        "Description": "POS WEBB'S ORCHARD",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "c6d48cd85924d2e0f5fd6677fc2ec44b8c50d28ed46bcc58ea1fbb4f32378d89": {
+        "Description": "POS The Albie",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "ca7f3f03787c4103e5368eaf937e3ffcf654d4b084b83179f0390da3bcd790b1": {
+        "Description": "POS CITY CARDS & MAGS",
+        "Category": "Miscellaneous",
+        "Source": "manual"
+    },
+    "e7434f387d23938792c04414a55adafdd65e84ee05a276889807b3624853f8a8": {
+        "Description": "POS Mecca Wellington",
+        "Category": "Health",
+        "Source": "manual"
+    },
+    "5cd2979e33fc7f60b323dd787791a507b8272db85d0f39dd07cc168f00b8db86": {
+        "Description": "POS Goodfor Wellington",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "d28600587e9db9985aaef25887e13e53704e191038910b067cdf25e1dd1a6a18": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "a1e128672500e4f3c87cd6d467e96628e72bf4066ed48e24638a86c5104e9859": {
+        "Description": "POS NEW WORLD WELLINGTON CI",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "87ae9cf0c8bc5104006c6b1d24c6ba39e0d9a95fa8910ad0a0c7647e653555f0": {
+        "Description": "POS NEW WORLD WELLINGTON CI",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "e4d1ad86763a107bd627ed2f8d5dc84ac6fe2b3279972e7a74d763ead31e2a75": {
+        "Description": "POS NEW WORLD WELLINGTON CI",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "c1f29098c05972806ed4c0175b21df9c7ad78befa1eed12f983299ec014d786e": {
+        "Description": "POS NEW WORLD WELLINGTON CI",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "ca1d09a1aca5293eec89db80b306f93e806994be276b829c5b3d124aab0bd35c": {
+        "Description": "POS NEW WORLD WELLINGTON C",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "ded6bb186f3b76f158312f9a4c1d4700535d645d9cc76d14e1e72fa149e85332": {
+        "Description": "POS NEW WORLD WELLINGTON CI",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "a84ee95a895b264053e56aec4c244150b86ad3d625aa05cae2d90953bc3cf310": {
+        "Description": "POS NEW WORLD WELLINGTON CI",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "98df2e793daf7d21e549b6766bfc52c26e4b1b66b1037417dac8b886e3edc105": {
+        "Description": "POS NEW WORLD WELLINGTON CI",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "c8e5e1c264ef02c3cc26b97f543c86f3b03abaaf414c7d2d7a2bc2c3b25a009c": {
+        "Description": "POS NEW WORLD WELLINGTON CI",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "35f3f8f3e971f546e71a7e007d6cd3c9c4a1d7da127202e7e65252140c3d7ab8": {
+        "Description": "POS NEW WORLD WELLINGTON CI",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "7e31224234d1dac905a0ca326ed348afc94ca29e7c5a1ea1ce3a2dcf31d47f52": {
+        "Description": "POS NEW WORLD WELLINGTON CI",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "85e6c294f59e5304d4d53849bd3776c867164634a4ae1810c2cce65a8ff08b9c": {
+        "Description": "POS NEW WORLD WELLINGTON CI",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "a98603e581594b2c1a865aee3405c135edf616c9cd47db452907dadf9436ac77": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "b567d7ad8dc36354135b52e9e72a18d6da88b21ab6819a938ced8e3e69d013a7": {
+        "Description": "POS NEW WORLD THORNDON",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "2dd31204de09de1fbf429b7e0dd29f1b7a70bb26dcfe73d1f0a5b479962bef82": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "9bec2db075b4be9e5b3d5890114e6aa9ab61295441bb5ca3fcbbc85c4212f52c": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "98afe7aa38ec9167463e267abb9672a29f83654223c071588469adf660b90e75": {
+        "Description": "POS NEW WORLD THORNDON",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "b3d5561239c012226ec97b0f9726dd4b0eccc89b91850818a5461d2360df746d": {
+        "Description": "POS NEW ZEALAND SCHOOL OF D",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "d51440d5765a5f2abe45af4d328898e48239679cebd651ac772ee26ad7441fa8": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "199ba83b64936b48b7f15250a1b27555bd335b1fa21f8b1e07cfb3d741235481": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "6dabc91e982d56edc7ccc14321d1f481e798745baaf3ff54f0e5766278ec6aea": {
+        "Description": "From 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "auto"
+    },
+    "0ca3491d36ce1728188c9c41eedd655f3b5abc324c4696e8c38a9ea8c9ef905d": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "64810aff8e887894b0958eb8892ab663a1b7c58865481ca8799a692bc7bd0074": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "17d0941ecfb1c0e6b48d286845ec1fbc5ae0e891d13bee8504dd82b50791e882": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "6fb8237e1eded291f7f91ac6e6b72b1328103f7519e58c214b7aaad260b0052d": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "11886ba78102a51a4bc30c57fd3ef01d510122c339ae98fd4e011d76cca71814": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "fde1da00ebf8de83c7d9597d823fa90bb7401ee5f1435f1bb3d5a2a901fd6115": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "08e87183ed7708b814b82988bf69330d5b561d1b7b15b6b2d84545a56e802a59": {
+        "Description": "POS NEW WORLD THORNDON",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "15acbe377b32dddf96ea3cbc1d7ade8e1966477ce15120a18673f55b2233fcfc": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "2407bb7f94b1b221c4f7884003aef4cbbb2a0dad562fa24259aef7ffea5ee889": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "f16d4ea97c5811e6d4312fb7d7a7e14273c82f49affbe85885f2725af4f765e6": {
+        "Description": "POS NEW WORLD THORNDON",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "e2b2507b30041970e63fef98ad30972dd8d00edb19302de454d3d4dd93825a31": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "14c1176dc8ea7a820f09cf010f2098b28c7e56870c2e67edb858f397670145b2": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "162c9508674cce59922044f3004010e23dd63fcfc942092cfbbb2aba8f8b6fbe": {
+        "Description": "POS NEW WORLD THORNDON",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "232cf6e1badf33953f75603974210f875e13306b790b307b15b840db51e086f2": {
+        "Description": "POS NEW WORLD THORNDON",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "2748bfb0fa32ac066d60f38ae95bcfd147199b6feb39ab4001fd6f79368ce5ed": {
+        "Description": "From 02-1245-0170854-001",
+        "Category": "TF Kate",
+        "Source": "auto"
+    },
+    "3fe6677454a5dda48130957dd1d776e1ff240eae486258a93e09e71ce2c65cf6": {
+        "Description": "POS NEW WORLD THORNDON",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "3741850091c37082b7aa35d8b5cbb8b519de86aab82c7446ffbb711bc2430b96": {
+        "Description": "POS NEW WORLD THORNDON",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "a6bd6fe32b0e634e4bd59ebe89595cdd7a0d2079951ece795d9cef10053ef3c1": {
+        "Description": "POS MOORE WILSONS",
+        "Category": "Grocery",
+        "Source": "auto"
+    },
+    "0d05647895aae3c2a7cbb3613bcb94f13e189e369b3f7612813acb9ab44efe73": {
+        "Description": "POS COFFIX MOLESWORTH",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "f7dbbc665c55eb2596aa01017cb86d8cb5f81bd1d7ca47e5a556ab26cfee8ce1": {
+        "Description": "POS COFFIX MOLESWORTH",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "7792f4c72df0028691038bc3a49933aa9de7b430ebd54cc21e16d7a73082fd69": {
+        "Description": "POS COFFIX MOLESWORTH",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "87ae4759ece64597ac7a6f3176b1c41e8a35367dd42b61a533bef580f1fe5925": {
+        "Description": "POS MOLESWORTH GOODS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "2ede11997e75575cd600af9419e554c788756166a60f15522ed51d644854ac0f": {
+        "Description": "POS MOLESWORTH GOODS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "1e6b53f9486b627960496e256dedc3f42a1dc2b66ecb8f045b196c1886d970df": {
+        "Description": "POS MOLESWORTH GOODS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "cb9c41a0a4d5b2101a7331cd7e3606ad7bf8e1250d4593b40263b274983bea48": {
+        "Description": "POS MOLESWORTH GOODS",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "e5571634545c8236718a87390b84e53577cad3ce62646187be9f4067b8c7aa82": {
+        "Description": "POS Taste Of India",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "d3146adbb1763d30db6b551f911a608e67e0ea860ad41c1feb27d8e2ea8a7eb9": {
+        "Description": "POS Taste Of India",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "f421e63c25a397b422e8728edd015666a342b156c58ee2c768bb92dd005c1807": {
+        "Description": "POS LOLA STAYS",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "9ea8ed0cd502972aeff8b2fc9916b5db674cd0f0b510c8d8332ade6f5acce7b0": {
+        "Description": "POS LOLA STAYS",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "b0903737a967a0e084890c098ab66b1784cd4915ea749c5a23c99c18c8c7b78a": {
+        "Description": "POS LOLA STAYS",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "ffcc4ebde96ff1427e529187e829de6fa42e7ca8b380fb18b53f256e7342f4d4": {
+        "Description": "POS Bunnings Wellington",
+        "Category": "Miscellaneous",
+        "Source": "manual"
+    },
+    "ee06d0892d1c9bde1793ae0ef145914bce60b60b07a60064346c5bada4f384ee": {
+        "Description": "POS Caffe L'affare",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "db4670ad467a906476012bb377340a1764f7f669fb1820a2ab2215b2237d5838": {
+        "Description": "POS Caffe L'affare",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "028d1a2e06716ac9427cdb114bcf4d337fac9940570891443a4b24e25e212d90": {
+        "Description": "POS CambridgeCornerConvenie",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "66e28514ec6b47b6762bfdeb54833a8057f023164b6d82687580f8613bbd51e8": {
+        "Description": "POS CambridgeCornerConvenie",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "ec2e7063cbdf8f2cae290fb54f1db59fecad713aaf96c2d89b6bb5da0e078b5a": {
+        "Description": "POS CambridgeCornerConvenie",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "209c752897246fbe9cf3f3178aaa6378d3b85c17e3db5a1dc1b6d23935455a52": {
+        "Description": "POS GREENLAND CAFE",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "939a88267f35691e5b81b9d46b75f7ab2bda011c63c127ff31e8deb549ab051e": {
+        "Description": "POS GREENLAND CAFE",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "183410eff56764b179d3e7c9f5388f00f9f73927fa00ec63f1210a15b7c4a3c2": {
+        "Description": "POS GREENLAND CAFE",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "c2682431ea8f65b801b96d1a8f44b2b8639581661283dc56a1476ac027698977": {
+        "Description": "POS Mystic Kitchen",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "051f9041bdfef19054036f1e744625ac0c2874fc0dc59ce5afb45883cd05461f": {
+        "Description": "POS Mystic Kitchen",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "286a62d26ae22af49d61c6dce07026f9a4c00f7eb6e7a4f44981bec4cc0a21d3": {
+        "Description": "POS Mystic Kitchen",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "93240645f9a05ade8703939b133d7daedace78b8bc2ff281e5035a598c4b9f29": {
+        "Description": "POS Mystic Kitchen",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "55b99f34031fdf27eba23adf0f8e271d2ebf20f757c4152204485849c137cdba": {
+        "Description": "POS CAFFEINATED DRAGON GAME",
+        "Category": "Entertainment",
+        "Source": "manual"
+    },
+    "d1679c6da75d2802dfbcca8bfc38308b868fccde0151d617891cd2259ea1cacc": {
+        "Description": "POS CAFFEINATED DRAGON GAME",
+        "Category": "Entertainment",
+        "Source": "manual"
+    },
+    "4557d1e509e397df91457fd39f5e8b04cbd17f2d40d604adce4c0d27aa138fbc": {
+        "Description": "POS Origin Food Shack",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "03344d1317399bd6b7a7eddb4f85d45d5e86d696ac4fe9a0d552bc8f517f8086": {
+        "Description": "POS Jake Lee Vege",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "ee30a25c20ceed9e5d4a0a5fa0139d110bba802f8e6c531e50cd9beecff694a8": {
+        "Description": "POS Jake Lee Vege",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "dfc316f77a46b10bad539d759c7f5f37b9be0e4615b49fca3ca15f4d31d80b98": {
+        "Description": "POS Jake Lee Vege",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "6b938e290ceb55ed074884b9b291cd14f99f06abfb83e9759408bd677ca85207": {
+        "Description": "POS Jake Lee Vege",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "02ba4dd3b5a407078961767f10a06f6df5a334f861679fd9d3d605900dd39cb2": {
+        "Description": "POS SHEVINGTON FARM",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "74a30e17b2a2be50aff3a1a08bb2787f294d52232766be448eacc7f7068cd0e3": {
+        "Description": "POS SHEVINGTON FARM",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "dbb7741c3f3843c8834896c697701abd343813946dacab9eb881ae939332e145": {
+        "Description": "POS SHEVINGTON FARM",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "6eae10018c4a6c56bd0e0528f7fc2ff681b110ecf55425abacb4b3d048a9fc91": {
+        "Description": "POS GELISSIMO",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "77502094d885327d2091bb81fced18e8c18be7602533e1404e45fc4470084274": {
+        "Description": "POS GELISSIMO",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "cf939a0e7bd2d5092e17a6ee7e135a9308d6a215136ec23a4a11c1ad6bff2b17": {
+        "Description": "POS GELISSIMO",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "d976b51775f1d22523a1d302e5001f9825c9fa5af9520f8469e7151136773270": {
+        "Description": "POS GELISSIMO",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "089acd0d1da9da18d78c4284076a68e0055f4839986e6bb313efe95bd808cc14": {
+        "Description": "POS The Fabric Store",
+        "Category": "Miscellaneous",
+        "Source": "manual"
+    },
+    "8d873235f6ed1c15e8b3c81cb04f874fa79b0773bc8d1730c4d269b9db0562ff": {
+        "Description": "POS WOOLWORTHS NZ 9508",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "084296afe818d3ce0eb590ab4bab2b3fc0e8c79f74d3fd28e1ad0a9339e915bf": {
+        "Description": "POS WOOLWORTHS NZ 9508",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "d2d8323e89d941d628d9f6adc083fb94e5f81454d7f0e03e037661ea3d0e1478": {
+        "Description": "POS WOOLWORTHS NZ 9508",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "192572d85059a9a0e3cac79460c2824cf4b3c6358fe3c8fab0f070bbe43753bb": {
+        "Description": "POS WOOLWORTHS NZ 9508",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "39b48120b595c37044f6f01516fcf6e70ad49570577ef06f855efade72941fd3": {
+        "Description": "POS Mean Doses Taproom",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "90f1fe744831501fa57c60d580784a87a1d03535afd4fae42bb68058f8e10c68": {
+        "Description": "POS NZ DRYCLEANERS",
+        "Category": "Miscellaneous",
+        "Source": "manual"
+    },
+    "61fde329182546c35f5414775a868a03084240620ec92c21dc22910da62ed13a": {
+        "Description": "POS HELLOFRESH NZ",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "9a6b132a4fe5c9fc5cbf05e393f4e52feed4ec9ec51bd14d79afc53d62e5c0b8": {
+        "Description": "To 02-1245-0170846-003",
+        "Category": "TF Leon",
+        "Source": "manual"
+    },
+    "4f662c47b9220a8845fcc874ad91d9a3cbedf5bed08af04b7570070a1ea0e8df": {
+        "Description": "From 02-1245-0170846-003",
+        "Category": "TF Leon",
+        "Source": "manual"
+    },
+    "1a755629db4cc208fde38360b7d933cf6ffd1dc588ad476495fde8c51fc962e4": {
+        "Description": "From 02-1245-0170846-031",
+        "Category": "TF Joint saving",
+        "Source": "manual"
+    },
+    "adae7881c4dc1e5b4497fbe5a8f38d1f6ba72fbb631992aa484b79d280957174": {
+        "Description": "From 02-1245-0170846-031",
+        "Category": "TF Joint saving",
+        "Source": "manual"
+    },
+    "8df2a4bcce3021210c83ba32f451dbbebcb9eb6074291fe02e6508f6dbd236dd": {
+        "Description": "From 02-1245-0170846-003",
+        "Category": "TF Leon",
+        "Source": "manual"
+    },
+    "aa27bb28e5db6b9db78d17367cfc8279e1a0cc0ac5a964e3dfbad31b4cf15e01": {
+        "Description": "From 02-1245-0170846-003",
+        "Category": "TF Leon",
+        "Source": "manual"
+    },
+    "00ff45c7cfe0bd7e29fb02c3a7cdf7170a6fa740c0f869b158a1979f63cdf514": {
+        "Description": "From 02-1245-0170846-031",
+        "Category": "TF Joint saving",
+        "Source": "manual"
+    },
+    "a7b340288cb6cdfb59b7051c976b450e897712188ae3ab967f9d21c378d12ef8": {
+        "Description": "From 02-1245-0170846-031",
+        "Category": "TF Joint saving",
+        "Source": "manual"
+    },
+    "12caf233592a78dd7256f228cb987806db52851f2e613694a60eb3dec6399cd6": {
+        "Description": "Leons domain 02-1245-0170846-001",
+        "Category": "TF Bills",
+        "Source": "manual"
+    },
+    "46c981c05ff29bc1f2df6ee2063606275edd17429961721fc35534fad650f289": {
+        "Description": "From 02-1245-0170846-001",
+        "Category": "TF Bills",
+        "Source": "manual"
+    },
+    "bfab80de73ad5696c511ba378e77b0371768ae712b83625adad4d11712109cfa": {
+        "Description": "From 02-1245-0170846-001",
+        "Category": "TF Bills",
+        "Source": "manual"
+    },
+    "6d9a9c6db42f47ef293dbafae547cba0224d98299dd909a920ce2ce249f7daa7": {
+        "Description": "POS PORIRUA FRESH",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "868810b52dc43e497233f4e269825221c0a1778dfe5e9c29465648f181b381cf": {
+        "Description": "POS Tony Jung",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "0969d591813791ba77c6006e6f44fb3c5f8b02c85a9cbc1a6f9bb40480ee6f83": {
+        "Description": "POS FREYBERG POOL *",
+        "Category": "Health",
+        "Source": "manual"
+    },
+    "e3ef9921cb714594f320e458e0d5c4167e3b632dd64fdbf4d92bd972db9cb272": {
+        "Description": "POS C INVESTMENTS LIMITE",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "67489f262a69dcd8d771bb4328ceeb412325ad5575e3f578dbeca42529475aed": {
+        "Description": "POS Opportunity For Anim",
+        "Category": "Household durables",
+        "Source": "manual"
+    },
+    "564da50a0ca1153f63e4eb67d973474cb9ed49cea1832aeeb32f7e88eda226bf": {
+        "Description": "POS Peoples Coffee Const",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "49d494636c859de2fc815e70b16119cb90f96699b81afc161cc15e38cde3274e": {
+        "Description": "POS LIBRARY - TORY",
+        "Category": "Miscellaneous",
+        "Source": "manual"
+    },
+    "2b63cf3dbfb5a8dca324ecfd8536ab351b7a9895c0629638b5b205f45c8f607f": {
+        "Description": "POS EZI*WgtnCityCouncil_Re",
+        "Category": "Health",
+        "Source": "manual"
+    },
+    "35401990a7012fb254529737f9ceb32f19baf2b26b5edc075c9d6ce7b882bcc6": {
+        "Description": "POS ALEXANDER PHARMACY",
+        "Category": "Health",
+        "Source": "manual"
+    },
+    "640596a91bd5957773bfb3aaaa02cab7ea5533692d769acee4627feb76de0cd4": {
+        "Description": "POS Willis Medical",
+        "Category": "Health",
+        "Source": "manual"
+    },
+    "12196b63a2ce5339cb31d021c4a958f98e32ef527547d3b4f31d131888e187a7": {
+        "Description": "POS REVERSAL NEW WORLD WELLINGTO",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "f3d94ea26341cb86e8696bfbe35bf3458bde6903b0f78894f5c133b6ff4042d0": {
+        "Description": "OL-EFTPOS SkinnyMobile fdce0884-3f3",
+        "Category": "Phone",
+        "Source": "manual"
+    },
+    "0dac83b07ac5b87a450e7b66d3cdcbe842b8233ed7b389b0cf23ceca79a5a7dc": {
+        "Description": "OL-EFTPOS SkinnyMobile f1491a44-907",
+        "Category": "Phone",
+        "Source": "manual"
+    },
+    "176d574b437800e64a1f16faeb785797e06e37feed6fe3bb7e1cd08373a009b7": {
+        "Description": "POS Pennys",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "fe148b0309e41d8cdbd05d5e023489ec48423a56c2547ad782cca42b9340758d": {
+        "Description": "POS Pennys",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "8973a86db33e535515c5fc85642bae21410cd5b99beccecd9b1e3d9d6c877fa4": {
+        "Description": "POS Snapper Services",
+        "Category": "Transport",
+        "Source": "manual"
+    },
+    "6aaa9acd81b55eb085b9260d8f0f5f64ff6534e93344cea6e41013de1fcd97aa": {
+        "Description": "POS Snapper Services",
+        "Category": "Transport",
+        "Source": "manual"
+    },
+    "030ecbdebf6d760e9509808b7eba1d85c549513aaa7b05b0b6b9d8b8a91f1b1d": {
+        "Description": "POS F2C*FOREST AND BIRD",
+        "Category": "Charity",
+        "Source": "manual"
+    },
+    "34252ba97afc8c519283538c8ac1c061e15b1c3402b5201f19686550345fd013": {
+        "Description": "POS SARAH SEARANCKE CATERIN",
+        "Category": "Entertainment",
+        "Source": "manual"
+    },
+    "9c70beae2d071b24d5538b99f508132edfd5b6a4beb41fbaced4d8e9181216cf": {
+        "Description": "POS NIGHT N DAY TARANAKI",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "6b1a0837bce8cfb391518aaec2df0c890ba5d3055d51b54e07ae78e6fd0b94e2": {
+        "Description": "POS TICKETMASTER VENUES WE",
+        "Category": "Entertainment",
+        "Source": "manual"
+    },
+    "c8d519f0809e477978bb40027a1f3c6dc0aa108bcffb444afdbb2d489d348cad": {
+        "Description": "POS The Greek Food Truck",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "22648d68970b44253777054bbbadc1dfe88b364e293758aa35d50ecad89a95bd": {
+        "Description": "POS ROTI BAY FOOD LIMITED",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "a23e067209bac6c8110cd2a6c20c079231d91ce058e0ff0a9bd5f05d26ac44a0": {
+        "Description": "POS NEW WORLD KARORI",
+        "Category": "Grocery",
+        "Source": "manual"
+    },
+    "2aa0eb09289c0ce9b86f19a8cff6f48ba254ccdcfd6b71f84278b4f395f7d58d": {
+        "Description": "POS COURTENAY PLACE BAKERY",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "8d5241ba9f56557cc462d00c454328c05477ac02b9f4ce2dc84eaac0efa8042a": {
+        "Description": "POS Satay Kingdom Cafe",
+        "Category": "Eating out",
+        "Source": "manual"
+    },
+    "cbfa1c22f4b40c086ca341f2a71bd5968268b43d67a909b5cda1ea1867e175a9": {
+        "Description": "POS FARMERS ONLINE",
+        "Category": "Household durables",
+        "Source": "manual"
+    },
+    "7e38e30442e7eb73312e2c480dd8a410e2abea5704e974630cd981a0833ba7d0": {
+        "Description": "POS MOJO TAHI",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "15833b7630f7d272be940c1191a90f455fbf8c3a86c8b61112cda8bd78690094": {
+        "Description": "POS APPLE.COM/BILL",
+        "Category": "Web services",
+        "Source": "manual"
+    },
+    "b2af0762ce9edfe81d0ee94e2f53c789a2bf08f66db6afbe30de7e7ea8dcef2b": {
+        "Description": "POS Ideegeo Group Ltd",
+        "Category": "Web services",
+        "Source": "manual"
+    },
+    "07452223feabc050dd88dc8cee09c9acc5b87f98640b9acabb87e760b2a156b8": {
+        "Description": "POS Ideegeo Group Ltd",
+        "Category": "Web services",
+        "Source": "manual"
+    },
+    "a422f2b5b07da05976a8d96566506aac172e9a81c0635643f83019ac8468b744": {
+        "Description": "POS CUSTOMS",
+        "Category": "Cafe",
+        "Source": "manual"
+    },
+    "da2f7fed3f388219ce060cdf254270b74ec03ceab8cc8856888b5f0654724479": {
+        "Description": "Kates domain 02-1245-0170846-001",
+        "Category": "TF Bills",
+        "Source": "manual"
+    },
+    "17c5079dcf415a3ff1630500b1d920e3c331d4c61dc5b085e171799b326c3e1e": {
+        "Description": "FOREIGN CURRENCY CONVERSION FEE",
+        "Category": "Web services",
+        "Source": "manual"
+    },
+    "4b63caeec2e6d11cc34963adc70543d330dec385e3f9d8aabb89c50428ca28f6": {
+        "Description": "FOREIGN CURRENCY CONVERSION FEE",
+        "Category": "Web services",
+        "Source": "manual"
+    },
+    "9800e7b835ab83fce7819da5bdfd55df4b74b969b3cf0d69e126ceb986b31957": {
+        "Description": "POS EUR 4.99 PROTON AG* PROTON",
+        "Category": "Web services",
+        "Source": "manual"
+    },
+    "1ae7e0267db872799012c9794d24fb1b87c6a5602782b443342ed18426a1a89a": {
+        "Description": "POS AMAZON WEB SERVICES",
+        "Category": "Web services",
+        "Source": "manual"
+    },
+    "dd06cb7fa515cb33b2873ee8fdcc35364723e9ac8627a680fd43e3892253ae4a": {
+        "Description": "POS USD 23.00 OPENAI *CHATGPT S",
+        "Category": "Web services",
+        "Source": "manual"
+    }
+}
