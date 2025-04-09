@@ -12,11 +12,27 @@ from config import AUTO_CLASSIFY_THRESHOLD, CLASSIFICATION_FILE
 from scrollable_frame import ScrollableFrame  # if you saved it separately
 # from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-from analytics import load_classified_data, create_spending_plot, create_spending_vs_transfer_plot
-from tkcalendar import DateEntry
+from analytics import load_classified_data, create_spending_vs_transfer_plot, create_rolling_average_plot
+
+BARPLOT_OPTIONS = {
+    "Monthly": 30,
+    "Fortnightly": 14,
+    "Weekly": 7,
+}   
+
+ROLLING_OPTIONS = {
+    "7D Rolling": 7,
+    "14D Rolling": 14,
+    "30D Rolling": 30,
+}
 
 class AppGUI:
+
     def __init__(self, master, controller):
+        # Set style 
+        #style = ttk.Style()
+        #style.theme_use("clam")
+
         self.master = master  # ✅ Store root window
         self.controller = controller  # ✅ Store controller instance
 
@@ -57,50 +73,88 @@ class AppGUI:
         
         
         # --- Summary tab ---
+        # Add summary tab to notebook
         self.summary_tab = ttk.Frame(self.notebook)
         self.notebook.add(self.summary_tab, text="Summary")
 
+        # Frame for the summary tab
+        self.summary_frame = ttk.Frame(self.summary_tab)
+        self.summary_frame.pack(fill="both", expand=True)
+
         # Summary sidebar
-        self.summary_sidebar = ttk.Frame(self.summary_tab)
+        self.summary_sidebar = ttk.Frame(self.summary_frame)
         self.summary_sidebar.pack(side="left", fill="y", padx=10, pady=10)
 
+        # Summary working output
+        self.summary_main = ttk.Frame(self.summary_frame)
+        self.summary_main.pack(side="right", fill="both", expand=True)
+
+        # Summary button
         self.summary_btn = tk.Button(self.summary_sidebar, text="Show Summary", command=self.show_summary)
         self.summary_btn.pack(pady=10)
 
 
         # --- Analytics tab ---
+        # Add analytics tab to notebook
         self.analytics_tab = ttk.Frame(self.notebook)
         self.notebook.add(self.analytics_tab, text="Analytics")
 
-        # Analyics sidebar
-        self.analytics_sidebar = ttk.Frame(self.analytics_tab)
+        # Frame for the analytics tab
+        self.analytics_frame = ttk.Frame(self.analytics_tab)
+        self.analytics_frame.pack(fill="both", expand=True)
+
+        # Analytics sidebar
+        self.analytics_sidebar = ttk.Frame(self.analytics_frame)
         self.analytics_sidebar.pack(side="left", fill="y", padx=10, pady=10)
 
-        self.analytics_view_mode = tk.StringVar(value="M")
-
-        # # Create a frame for options
-        # option_frame = ttk.Frame(self.analytics_tab)
-        # option_frame.pack(pady=(0, 10))
+        # Analytics working output
+        self.analytics_main = ttk.Frame(self.analytics_frame)
+        self.analytics_main.pack(side="right", fill="both", expand=True)
 
         # View mode dropdown
-        ttk.Label(self.analytics_sidebar, text="View by:").pack(side="left", padx=(0, 5))
+        ttk.Label(self.analytics_sidebar, text="View by:").pack(padx=(10, 2))
+        # Set default view mode
+        self.analytics_view_mode = tk.StringVar(value="Weekly")
+        # Create dropdown for view mode
         view_dropdown = ttk.Combobox(
             self.analytics_sidebar,
             textvariable=self.analytics_view_mode,
-            values=["M", "F", "W"],
+            values=["Monthly", "Fortnightly", "Weekly", "7D Rolling", "14D Rolling", "30D Rolling"],
             state="readonly",
             width=10
         )
-        view_dropdown.pack(side="left", padx=(0, 10))
-        view_dropdown.bind("<<ComboboxSelected>>", lambda e: self.update_analytics_tab())
+        view_dropdown.pack(padx=(0, 10))
+        view_dropdown.bind("<<ComboboxSelected>>", lambda e: self.update_analytics_main())
 
         # Date selector
-        ttk.Label(self.analytics_sidebar, text="Start date:").pack(side="left", padx=(10, 5))
         self.analytics_start_date = tk.StringVar()
-        date_entry = DateEntry(self.analytics_sidebar, textvariable=self.analytics_start_date, width=12, date_pattern="yyyy-mm-dd")
-        date_entry.pack(side="left")
+        ttk.Label(self.analytics_sidebar, text="Start date (yyyy-mm-dd):").pack(pady=(10, 2))
 
-        self.update_analytics_tab()
+        date_entry = ttk.Entry(
+            self.analytics_sidebar,
+            textvariable=self.analytics_start_date,
+            width=15
+        )
+        date_entry.pack(pady=(0, 10))
+
+        # Refresh chart button
+        refresh_button = ttk.Button(
+            self.analytics_sidebar,
+            text="Refresh Chart",
+            command=self.update_analytics_main
+        )
+        refresh_button.pack(pady=(10, 0))
+
+        # Toggle credit-expenditure vs expenditure only view
+        self.analytics_show_credit = tk.BooleanVar(value=True)
+        ttk.Checkbutton(
+            self.analytics_sidebar,
+            text="Show credit categories",
+            variable=self.analytics_show_credit,
+            command=self.update_analytics_main  # or .tab if that’s your trigger
+        ).pack(pady=(5, 10), anchor="w")
+
+        self.update_analytics_main()
 
 
     def show_summary(self):
@@ -122,11 +176,11 @@ class AppGUI:
         ).reset_index().sort_values(by="TotalAmount", ascending=False)
 
         # Clear previous summary display
-        for widget in self.summary_tab.winfo_children():
+        for widget in self.summary_main.winfo_children():
             widget.destroy()
 
         # Create Treeview table
-        tree = ttk.Treeview(self.summary_tab, columns=("Category", "Amount", "Count"), show="headings", height = 15)
+        tree = ttk.Treeview(self.summary_main, columns=("Category", "Amount", "Count"), show="headings", height = 15)
         tree.heading("Category", text="Category")
         tree.heading("Amount", text="Total Amount")
         tree.heading("Count", text="Transactions")
@@ -329,47 +383,45 @@ class AppGUI:
             # Just re-render the current card group to hide confirmed rows
             self.display_transaction_cards(self.current_group)
 
-    def update_analytics_tab(self):
-        for widget in self.analytics_tab.winfo_children():
+    def update_analytics_main(self):
+        for widget in self.analytics_main.winfo_children():
             widget.destroy()
 
         # Heading and controls
-        heading = ttk.Label(self.analytics_tab, text="Spending Overview", font=("Segoe UI", 14, "bold"))
+        heading = ttk.Label(self.analytics_main, text="Spending Overview", font=("Segoe UI", 14, "bold"))
         heading.pack(pady=(10, 5))
-
-        # # Dropdown to select view mode (Monthly or Weekly)
-        # mode_frame = ttk.Frame(self.analytics_tab)
-        # mode_frame.pack(pady=(0, 10))
-
-        # ttk.Label(mode_frame, text="View by:").pack(side="left", padx=(0, 5))
-
-        # view_dropdown = ttk.Combobox(
-        #     mode_frame,
-        #     textvariable=self.analytics_view_mode,
-        #     values=["M", "F", "W"],
-        #     state="readonly",
-        #     width=10
-        # )
-        # view_dropdown.pack(side="left")
-        # view_dropdown.bind("<<ComboboxSelected>>", lambda e: self.update_analytics_tab())
 
         # Load data and plot
         df = load_classified_data()
         if df.empty:
-            ttk.Label(self.analytics_tab, text="No data available for analytics.").pack(pady=20)
+            ttk.Label(self.analytics_main, text="No data available for analytics.").pack(pady=20)
             return
 
-        # fig = create_spending_vs_transfer_plot(df, freq=self.analytics_view_mode.get())
-        start_date = self.analytics_start_date.get() or None
-        fig = create_spending_vs_transfer_plot(df, freq=self.analytics_view_mode.get(), start_date=start_date)
+        # Get start date from entry
+        start_date_str = self.analytics_start_date.get().strip() or None
 
-        canvas = FigureCanvasTkAgg(fig, master=self.analytics_tab)
+        # Optional validation
+        try:
+            start_date = pd.to_datetime(start_date_str) if start_date_str else None
+        except ValueError:
+            messagebox.showwarning("Invalid date", "Please enter a valid start date (yyyy-mm-dd)")
+            return
+
+        mode = self.analytics_view_mode.get()
+
+        if mode in ROLLING_OPTIONS:
+            fig = create_rolling_average_plot(df, window=ROLLING_OPTIONS[mode], start_date=start_date)
+        else:
+            fig = create_spending_vs_transfer_plot(
+                df,
+                freq=BARPLOT_OPTIONS[mode],
+                start_date=start_date,
+                show_credit=self.analytics_show_credit.get()
+            )
+
+        canvas = FigureCanvasTkAgg(fig, master=self.analytics_main)
         canvas.draw()
         canvas.get_tk_widget().pack(fill="both", expand=True)
-
-        # Optional refresh button (if needed)
-        ttk.Button(self.analytics_tab, text="Refresh Chart", command=self.update_analytics_tab).pack(pady=10)
-
 
 
 if __name__ == "__main__":
