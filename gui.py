@@ -12,7 +12,7 @@ from config import AUTO_CLASSIFY_THRESHOLD, CLASSIFICATION_FILE
 from scrollable_frame import ScrollableFrame  # if you saved it separately
 # from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-from analytics import load_classified_data, create_spending_vs_transfer_plot, create_rolling_average_plot
+from analytics import load_classified_data, create_spending_vs_transfer_plot, create_rolling_average_plot, create_category_breakdown_plot
 
 BARPLOT_OPTIONS = {
     "Monthly": 30,
@@ -114,7 +114,7 @@ class AppGUI:
         # View mode dropdown
         ttk.Label(self.analytics_sidebar, text="View by:").pack(padx=(10, 2))
         # Set default view mode
-        self.analytics_view_mode = tk.StringVar(value="Weekly")
+        self.analytics_view_mode = tk.StringVar(value="7D Rolling")
         # Create dropdown for view mode
         view_dropdown = ttk.Combobox(
             self.analytics_sidebar,
@@ -136,6 +136,27 @@ class AppGUI:
             width=15
         )
         date_entry.pack(pady=(0, 10))
+
+        # Category breakdown vs total spend
+        self.analytics_mode = tk.StringVar(value="Total Spend")
+
+        ttk.Label(self.analytics_sidebar, text="View mode:").pack(pady=(10, 2), anchor="w")
+
+        ttk.Radiobutton(
+            self.analytics_sidebar,
+            text="Total Spend",
+            variable=self.analytics_mode,
+            value="Total Spend",
+            command=self.update_analytics_main
+        ).pack(anchor="w")
+
+        ttk.Radiobutton(
+            self.analytics_sidebar,
+            text="Category Breakdown",
+            variable=self.analytics_mode,
+            value="Category Breakdown",
+            command=self.update_analytics_main
+        ).pack(anchor="w")
 
         # Refresh chart button
         refresh_button = ttk.Button(
@@ -409,7 +430,19 @@ class AppGUI:
 
         mode = self.analytics_view_mode.get()
 
-        if mode in ROLLING_OPTIONS:
+        # if mode in ROLLING_OPTIONS:
+        #     fig = create_rolling_average_plot(df, window=ROLLING_OPTIONS[mode], start_date=start_date)
+        # else:
+        #     fig = create_spending_vs_transfer_plot(
+        #         df,
+        #         freq=BARPLOT_OPTIONS[mode],
+        #         start_date=start_date,
+        #         show_credit=self.analytics_show_credit.get()
+        #     )
+
+        if self.analytics_mode.get() == "Category Breakdown" and mode in ROLLING_OPTIONS:
+            fig = create_category_breakdown_plot(df, window=ROLLING_OPTIONS[mode], top_n=5, start_date=start_date)
+        elif mode in ROLLING_OPTIONS:
             fig = create_rolling_average_plot(df, window=ROLLING_OPTIONS[mode], start_date=start_date)
         else:
             fig = create_spending_vs_transfer_plot(
@@ -418,6 +451,7 @@ class AppGUI:
                 start_date=start_date,
                 show_credit=self.analytics_show_credit.get()
             )
+
 
         canvas = FigureCanvasTkAgg(fig, master=self.analytics_main)
         canvas.draw()
