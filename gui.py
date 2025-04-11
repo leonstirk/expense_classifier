@@ -144,6 +144,11 @@ class AppGUI:
             command=self.reset_reclassify_filters
         ).pack(pady=10)
 
+        # -- - Highlight style for reclassify tab ---
+        style = ttk.Style()
+        # style.configure("Highlight.TFrame", background="#d1ffd1")  # light green
+        style.configure("Highlight.TFrame", background="#d1ffd1", relief="raised", borderwidth=1)
+
 
         # --- Analytics tab ---
         # Add analytics tab to notebook
@@ -566,7 +571,7 @@ class AppGUI:
 
 
     # --- Reclassification/Explorer tab functions ---
-    def render_classified_transactions(self):
+    def render_classified_transactions(self, highlight_uid=None):
         for widget in self.reclassify_main.winfo_children():
             widget.destroy()
 
@@ -603,8 +608,21 @@ class AppGUI:
             return
 
         for _, row in filtered_df.iterrows():
-            frame = ttk.Frame(self.reclassify_main, padding=6)
+            uid = row["UID"]
+            #frame = ttk.Frame(self.reclassify_main, padding=6)
+
+            frame = ttk.Frame(self.reclassify_main, padding=6,
+                  style="Highlight.TFrame" if uid == highlight_uid else "TFrame")
+
+            # Highlight background if this was just updated
+            # if uid == highlight_uid:
+            #     frame.config(style="Highlight.TFrame")  # we'll define this style below
+
             frame.pack(fill="x", padx=10, pady=4)
+
+        # for _, row in filtered_df.iterrows():
+        #     frame = ttk.Frame(self.reclassify_main, padding=6)
+        #     frame.pack(fill="x", padx=10, pady=4)
 
             ttk.Label(frame, text=row["Date"].date(), width=12).pack(side="left")
             ttk.Label(frame, text=row["Details"], width=40, anchor="w").pack(side="left")
@@ -650,8 +668,13 @@ class AppGUI:
         with open(CLASSIFICATION_FILE, "w") as f:
             json.dump(classifications, f, indent=4)
 
-        self.load_classified_transactions()        # ⬅ reloads the JSON into memory
-        self.render_classified_transactions()   # ⬅ re-renders the UI with updated data
+        messagebox.showinfo("Category Updated", f"Transaction updated to '{new_category}'.")
+
+        self.load_classified_transactions()
+        self.render_classified_transactions(highlight_uid=uid)
+
+        # self.load_classified_transactions()        # ⬅ reloads the JSON into memory
+        # self.render_classified_transactions()   # ⬅ re-renders the UI with updated data
 
 if __name__ == "__main__":
     master = tk.Tk()
