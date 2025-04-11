@@ -12,12 +12,14 @@ from config import AUTO_CLASSIFY_THRESHOLD, CLASSIFICATION_FILE
 from scrollable_frame import ScrollableFrame  # if you saved it separately
 # from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-from analytics import load_classified_data, create_spending_vs_transfer_plot, create_rolling_average_plot, create_category_breakdown_plot
+from analytics import create_spending_vs_transfer_plot, create_spending_category_bar_plot, create_rolling_total_plot, create_rolling_category_plot
+from utils import load_classified_data
 
 BARPLOT_OPTIONS = {
-    "Monthly": 30,
-    "Fortnightly": 14,
+    "Daily" : 1,
     "Weekly": 7,
+    "Fortnightly": 14,
+    "Monthly": 30,
 }   
 
 ROLLING_OPTIONS = {
@@ -44,6 +46,9 @@ class AppGUI:
 
         self.controller = AppController()
 
+        ## --- Transactions datafrme in memory ---
+        self.classified_df = pd.DataFrame()
+        self.load_classified_transactions()
 
         ## --- Notebook setup ---
         self.notebook = ttk.Notebook(self.master)
@@ -94,6 +99,52 @@ class AppGUI:
         self.summary_btn.pack(pady=10)
 
 
+        # --- Reclassification Tab ---
+        self.reclassify_tab = ttk.Frame(self.notebook)
+        self.notebook.add(self.reclassify_tab, text="Classify Explorer")
+
+        # Layout frame for sidebar + main content
+        self.reclassify_frame = ttk.Frame(self.reclassify_tab)
+        self.reclassify_frame.pack(fill="both", expand=True)
+
+        # Sidebar
+        self.reclassify_sidebar = ttk.Frame(self.reclassify_frame)
+        self.reclassify_sidebar.pack(side="left", fill="y", padx=10, pady=10)
+
+        # Main scrollable content
+        self.reclassify_scrollable = ScrollableFrame(self.reclassify_frame)
+        self.reclassify_scrollable.pack(side="right", fill="both", expand=True)
+        self.reclassify_main = self.reclassify_scrollable.inner_frame
+
+        # Analytics sidebar UI components
+        self.reclassify_filter_category = tk.StringVar()
+        self.reclassify_filter_vendor = tk.StringVar()
+
+        # --- Category Filter ---
+        ttk.Label(self.reclassify_sidebar, text="Filter by Category").pack(anchor="w")
+        self.category_filter_entry = ttk.Combobox(
+            self.reclassify_sidebar,
+            textvariable=self.reclassify_filter_category,
+            values=[],  # Will be populated dynamically
+            state="readonly"
+        )
+        self.category_filter_entry.pack(fill="x", pady=(0, 8))
+        self.category_filter_entry.bind("<<ComboboxSelected>>", lambda e: self.render_classified_transactions())
+
+        # --- Vendor Filter ---
+        ttk.Label(self.reclassify_sidebar, text="Search by Vendor/Description").pack(anchor="w")
+        self.vendor_filter_entry = ttk.Entry(self.reclassify_sidebar, textvariable=self.reclassify_filter_vendor)
+        self.vendor_filter_entry.pack(fill="x", pady=(0, 8))
+        self.vendor_filter_entry.bind("<KeyRelease>", lambda e: self.render_classified_transactions())
+
+        # --- Reset Button ---
+        ttk.Button(
+            self.reclassify_sidebar,
+            text="Reset Filters",
+            command=self.reset_reclassify_filters
+        ).pack(pady=10)
+
+
         # --- Analytics tab ---
         # Add analytics tab to notebook
         self.analytics_tab = ttk.Frame(self.notebook)
@@ -111,20 +162,41 @@ class AppGUI:
         self.analytics_main = ttk.Frame(self.analytics_frame)
         self.analytics_main.pack(side="right", fill="both", expand=True)
 
-        # View mode dropdown
-        ttk.Label(self.analytics_sidebar, text="View by:").pack(padx=(10, 2))
-        # Set default view mode
-        self.analytics_view_mode = tk.StringVar(value="7D Rolling")
-        # Create dropdown for view mode
-        view_dropdown = ttk.Combobox(
+        # Chart type button
+        self.analytics_chart_type = tk.StringVar(value="Bar")
+
+        ttk.Label(self.analytics_sidebar, text="Chart type:").pack(pady=(10, 2), anchor="w")
+
+        ttk.Radiobutton(
+            self.analytics_sidebar,
+            text="Bar",
+            variable=self.analytics_chart_type,
+            value="Bar",
+            command=self.update_frequency_options
+        ).pack(anchor="w")
+
+        ttk.Radiobutton(
+            self.analytics_sidebar,
+            text="Line",
+            variable=self.analytics_chart_type,
+            value="Line",
+            command=self.update_frequency_options
+        ).pack(anchor="w")
+
+        self.bar_frequencies = ["Daily", "Weekly", "Fortnightly", "Monthly"]
+        self.line_frequencies = ["7-day", "14-day", "30-day"]
+
+        self.analytics_view_mode = tk.StringVar(value=self.bar_frequencies[0])  # default to Daily
+
+        self.view_dropdown = ttk.Combobox(
             self.analytics_sidebar,
             textvariable=self.analytics_view_mode,
-            values=["Monthly", "Fortnightly", "Weekly", "7D Rolling", "14D Rolling", "30D Rolling"],
+            values=self.bar_frequencies,
             state="readonly",
-            width=10
+            width=20
         )
-        view_dropdown.pack(padx=(0, 10))
-        view_dropdown.bind("<<ComboboxSelected>>", lambda e: self.update_analytics_main())
+        self.view_dropdown.pack(pady=(0, 10))
+        self.view_dropdown.bind("<<ComboboxSelected>>", lambda e: self.update_analytics_main())
 
         # Date selector
         self.analytics_start_date = tk.StringVar()
@@ -136,6 +208,17 @@ class AppGUI:
             width=15
         )
         date_entry.pack(pady=(0, 10))
+
+        # Toggle credit-expenditure vs expenditure only view
+        self.analytics_show_credit = tk.BooleanVar(value=True)
+        # CREDIT toggle (bars only)
+        self.show_credit_toggle = ttk.Checkbutton(
+            self.analytics_sidebar,
+            text="Show credit categories",
+            variable=self.analytics_show_credit,
+            command=self.update_analytics_main
+        )
+        self.show_credit_toggle.pack(pady=(5, 10), anchor="w")
 
         # Category breakdown vs total spend
         self.analytics_mode = tk.StringVar(value="Total Spend")
@@ -166,16 +249,38 @@ class AppGUI:
         )
         refresh_button.pack(pady=(10, 0))
 
-        # Toggle credit-expenditure vs expenditure only view
-        self.analytics_show_credit = tk.BooleanVar(value=True)
-        ttk.Checkbutton(
-            self.analytics_sidebar,
-            text="Show credit categories",
-            variable=self.analytics_show_credit,
-            command=self.update_analytics_main  # or .tab if that’s your trigger
-        ).pack(pady=(5, 10), anchor="w")
-
+        # Render initial tab outputs
+        self.render_classified_transactions()
         self.update_analytics_main()
+
+    # --- Database functions ---
+    def load_classified_transactions(self):
+        self.classified_df = load_classified_data()
+
+    # Sidebar toggle functions
+    def update_frequency_options(self):
+        chart_type = self.analytics_chart_type.get()
+
+        if chart_type == "Bar":
+            new_values = self.bar_frequencies
+        else:
+            new_values = self.line_frequencies
+
+        self.view_dropdown["values"] = new_values
+        if self.analytics_view_mode.get() not in new_values:
+            self.analytics_view_mode.set(new_values[0])  # reset to default
+
+        self.update_toggle_visibility()
+        self.update_analytics_main()  # trigger refresh
+
+
+    def update_toggle_visibility(self):
+        chart_type = self.analytics_chart_type.get()
+
+        if chart_type == "Bar":
+            self.show_credit_toggle.pack(pady=(5, 10), anchor="w")
+        else:
+            self.show_credit_toggle.pack_forget()
 
 
     def show_summary(self):
@@ -279,7 +384,7 @@ class AppGUI:
         return False
 
 
-    ## Frame based cards layout rendering function 
+    ## --- Classification tab functions ---
     def display_transaction_cards(self, merged_rows):
         # Clear old cards
         for widget in self.card_frame.winfo_children():
@@ -404,59 +509,149 @@ class AppGUI:
             # Just re-render the current card group to hide confirmed rows
             self.display_transaction_cards(self.current_group)
 
+    # --- Analytics tab functions --- 
     def update_analytics_main(self):
+        # Clear current chart area
         for widget in self.analytics_main.winfo_children():
             widget.destroy()
 
-        # Heading and controls
-        heading = ttk.Label(self.analytics_main, text="Spending Overview", font=("Segoe UI", 14, "bold"))
-        heading.pack(pady=(10, 5))
-
-        # Load data and plot
-        df = load_classified_data()
+        df = self.classified_df.copy()
         if df.empty:
-            ttk.Label(self.analytics_main, text="No data available for analytics.").pack(pady=20)
+            ttk.Label(self.analytics_main, text="No data available.").pack()
             return
 
-        # Get start date from entry
-        start_date_str = self.analytics_start_date.get().strip() or None
+        chart_type = self.analytics_chart_type.get()
+        view_mode = self.analytics_view_mode.get()
+        display_mode = self.analytics_mode.get()  # Total Spend or Category Breakdown
+        start_date = self.analytics_start_date.get().strip() or None
+        show_credit = self.analytics_show_credit.get()
 
-        # Optional validation
-        try:
-            start_date = pd.to_datetime(start_date_str) if start_date_str else None
-        except ValueError:
-            messagebox.showwarning("Invalid date", "Please enter a valid start date (yyyy-mm-dd)")
-            return
+        # Convert bar mode frequency to numerical
+        bar_freq_map = {
+            "Daily": 1,
+            "Weekly": 7,
+            "Fortnightly": 14,
+            "Monthly": 30,
+        }
 
-        mode = self.analytics_view_mode.get()
+        # Convert line mode view to rolling window
+        rolling_map = {
+            "7-day": 7,
+            "14-day": 14,
+            "30-day": 30,
+        }
 
-        # if mode in ROLLING_OPTIONS:
-        #     fig = create_rolling_average_plot(df, window=ROLLING_OPTIONS[mode], start_date=start_date)
-        # else:
-        #     fig = create_spending_vs_transfer_plot(
-        #         df,
-        #         freq=BARPLOT_OPTIONS[mode],
-        #         start_date=start_date,
-        #         show_credit=self.analytics_show_credit.get()
-        #     )
+        if chart_type == "Bar":
+            freq = bar_freq_map.get(view_mode, 7)
+            if display_mode == "Total Spend":
+                fig = create_spending_vs_transfer_plot(df, freq=freq, start_date=start_date, show_credit=show_credit)
+            else:
+                fig = create_spending_category_bar_plot(df, freq=freq, start_date=start_date)
 
-        if self.analytics_mode.get() == "Category Breakdown" and mode in ROLLING_OPTIONS:
-            fig = create_category_breakdown_plot(df, window=ROLLING_OPTIONS[mode], top_n=5, start_date=start_date)
-        elif mode in ROLLING_OPTIONS:
-            fig = create_rolling_average_plot(df, window=ROLLING_OPTIONS[mode], start_date=start_date)
+        elif chart_type == "Line":
+            window = rolling_map.get(view_mode, 7)
+            if display_mode == "Total Spend":
+                fig = create_rolling_total_plot(df, window=window, start_date=start_date)
+            else:
+                fig = create_rolling_category_plot(df, window=window, start_date=start_date)
+
         else:
-            fig = create_spending_vs_transfer_plot(
-                df,
-                freq=BARPLOT_OPTIONS[mode],
-                start_date=start_date,
-                show_credit=self.analytics_show_credit.get()
-            )
+            ttk.Label(self.analytics_main, text="Invalid chart type selected.").pack()
+            return
 
-
+        # Render the figure
         canvas = FigureCanvasTkAgg(fig, master=self.analytics_main)
         canvas.draw()
         canvas.get_tk_widget().pack(fill="both", expand=True)
 
+
+    # --- Reclassification/Explorer tab functions ---
+    def render_classified_transactions(self):
+        for widget in self.reclassify_main.winfo_children():
+            widget.destroy()
+
+        df = self.classified_df.copy()
+
+        if df.empty:
+            ttk.Label(self.reclassify_main, text="No classified transactions found.").pack(pady=10)
+            return
+
+        # Update sidebar filter options
+        # unique_categories = sorted(df["Category"].dropna().unique())
+        # self.category_filter_entry["values"] = [""] + unique_categories
+
+        unique_categories = sorted(cat for cat in df["Category"].dropna().unique() if str(cat).strip())
+        self.category_filter_entry["values"] = [""] + unique_categories
+
+        # Apply filters
+        selected_cat = self.reclassify_filter_category.get().strip()
+        vendor_search = self.reclassify_filter_vendor.get().lower().strip()
+
+        filtered_df = df.copy()  # fallback if value is invalid
+
+        # ✅ Sort by date descending
+        filtered_df = filtered_df.sort_values(by="Date", ascending=False)
+        
+        filtered_df = filtered_df.head(100) # debug - annoying rendering slowness need to limit date range
+
+        if selected_cat:
+            filtered_df = filtered_df[filtered_df["Category"] == selected_cat]
+        if vendor_search:
+            filtered_df = filtered_df[filtered_df["Details"].str.lower().str.contains(vendor_search)]
+        if filtered_df.empty:
+            ttk.Label(self.reclassify_main, text="No transactions match current filters.").pack(pady=10)
+            return
+
+        for _, row in filtered_df.iterrows():
+            frame = ttk.Frame(self.reclassify_main, padding=6)
+            frame.pack(fill="x", padx=10, pady=4)
+
+            ttk.Label(frame, text=row["Date"].date(), width=12).pack(side="left")
+            ttk.Label(frame, text=row["Details"], width=40, anchor="w").pack(side="left")
+            ttk.Label(frame, text=f"${float(row['Amount']):.2f}", width=10).pack(side="left")
+
+            category_var = tk.StringVar(value=row["Category"])
+            category_dropdown = ttk.Combobox(
+                frame,
+                textvariable=category_var,
+                values=unique_categories,
+                width=20,
+                state="readonly"
+            )
+            category_dropdown.pack(side="left", padx=(0, 5))
+
+            ttk.Button(
+                frame,
+                text="Update",
+                command=lambda uid=row["UID"], new_cat=category_var: self.update_transaction_category(uid, new_cat.get())
+            ).pack(side="left")
+
+            ttk.Label(frame, text=row.get("Source", ""), width=10, foreground="gray").pack(side="left")
+
+
+    def reset_reclassify_filters(self):
+        self.reclassify_filter_category.set("")
+        self.reclassify_filter_vendor.set("")
+        self.load_classified_transactions()        # ⬅ reloads the JSON into memory
+        self.render_classified_transactions()
+
+
+    def update_transaction_category(self, uid, new_category):
+        with open(CLASSIFICATION_FILE, "r") as f:
+            classifications = json.load(f)
+
+        if uid not in classifications:
+            messagebox.showerror("Error", "Transaction not found in classification file.")
+            return
+
+        classifications[uid]["Category"] = new_category
+        classifications[uid]["Source"] = "manual"
+
+        with open(CLASSIFICATION_FILE, "w") as f:
+            json.dump(classifications, f, indent=4)
+
+        self.load_classified_transactions()        # ⬅ reloads the JSON into memory
+        self.render_classified_transactions()   # ⬅ re-renders the UI with updated data
 
 if __name__ == "__main__":
     master = tk.Tk()
