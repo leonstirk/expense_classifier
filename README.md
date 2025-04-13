@@ -143,6 +143,3 @@ Built by [Leon Stirk-Wang] — [[leon@stirkwang.com](mailto\:leon@stirkwang.com)
 Follow along at [leonstirkwang.com] or [@die_flator_maus]
 
 ---
-
-Let me know if you'd like to update this `README.md` automatically with the current milestone list or GitHub links.
-
