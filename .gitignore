@@ -1,0 +1,19 @@
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+exenv/
+env/
+venv/
+
+# OS & editor stuff
+.DS_Store
+*.swp
+
+# Data / logs
+data/*
+*.csv
+*.log
+
